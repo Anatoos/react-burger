@@ -1,0 +1,31 @@
+.header {
+    display:flex;
+    justify-content: space-between;
+    background-color: #1C1C21;
+    padding: 32px 320px;
+    align-items: center;
+
+}
+.navbar {
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.headerItem {
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 20px!important;
+    margin: 0 17px !important;
+    gap: 8px;
+
+    background: #1C1C21;
+    border: 1px dashed #4C4CFF;
+    border-radius: 40px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
