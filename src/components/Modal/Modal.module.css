@@ -1,0 +1,20 @@
+.wrapper{
+    position: fixed;
+    width: 600px;
+    max-height: 600px;
+    z-index: 3;
+    background-color: rgb(28, 28, 33);
+    border-radius: 50px;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -250px;
+
+}
+
+.modal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px 40px 0 40px;
+}

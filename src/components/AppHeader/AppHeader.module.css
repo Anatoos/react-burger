@@ -1,0 +1,28 @@
+.header {
+    position: fixed;
+    background-color: #1C1C21;
+    width:100%;
+    top: 0;
+}
+.header_menu{
+    display: flex;
+    justify-content: space-around;
+}
+.navbar {
+    display: flex;
+    gap: 9px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    padding: 0 20px!important;
+    margin: 20px 0!important;
+    gap: 17px
+}
+.logo{
+    position: absolute;
+    left: 43%;
+    margin: 24px 0;
+
+}
