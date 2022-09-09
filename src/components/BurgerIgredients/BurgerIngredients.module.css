@@ -1,11 +1,8 @@
-.wrapper{
-
-}
 .title{
     margin:40px 0 24px 0;
 }
 .tabs{
-
+ display: flex;
 }
 .ingredients{
     width: 600px;
@@ -47,4 +44,8 @@
 }
 .custom{
     position: relative;
+}
+.item__price{
+    display: flex;
+    justify-content: center;
 }

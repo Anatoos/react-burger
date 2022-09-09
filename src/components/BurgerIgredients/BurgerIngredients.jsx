@@ -11,7 +11,7 @@ import {ingredientType} from "../../types/Ingredient";
 const Tabs = () => {
     const [current, setCurrent] = React.useState('one')
     return (
-        <div style={{ display: 'flex' }}>
+        <div className={biStyles.tabs}>
             <Tab value="one" active={current === 'one'} onClick={setCurrent}>
                 Булки
             </Tab>
@@ -45,7 +45,7 @@ const BurgerIngredients = (props) => {
     }
 
     return (
-        <div className={biStyles.wrapper}>
+        <div>
             {activeModal && (
                 <Modal title="Детали ингредиента" close={closeModal}>
                     <IngredientDetails data={activeIngredient} />
@@ -69,7 +69,7 @@ const BurgerIngredients = (props) => {
                 <div className={biStyles.ingredients_list}>
                     {data.map((element) => (
                         element.type === 'bun' && (
-                            <IngredientCard key={element._id} item={element} class={biStyles.item} onClick={setActiveIngredientId}/>)
+                            <IngredientCard key={element._id} item={element} priceClass ={biStyles.item__price} class={biStyles.item} onClick={setActiveIngredientId}/>)
                     ))}
                 </div>
                 <div className={biStyles.title}>
@@ -80,7 +80,7 @@ const BurgerIngredients = (props) => {
                 <div className={biStyles.ingredients_list}>
                     {data.map((element, index) => (
                         element.type === 'sauce' && (
-                            <IngredientCard key={index} item={element} class={biStyles.item}  onClick={setActiveIngredientId}/>)
+                            <IngredientCard key={index} item={element} priceClass ={biStyles.item__price} class={biStyles.item}  onClick={setActiveIngredientId}/>)
                     ))}
                 </div>
                 <div className={biStyles.title}>
@@ -91,7 +91,7 @@ const BurgerIngredients = (props) => {
                 <div className={biStyles.ingredients_list}>
                     {data.map((element, index) => (
                         element.type === 'main' && (
-                            <IngredientCard key={index} item={element} class={biStyles.item}  onClick={setActiveIngredientId}/>)
+                            <IngredientCard key={index} item={element} priceClass ={biStyles.item__price} class={biStyles.item}  onClick={setActiveIngredientId}/>)
                     ))}
                 </div>
             </div>

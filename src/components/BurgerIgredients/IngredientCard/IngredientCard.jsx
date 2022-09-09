@@ -6,7 +6,7 @@ const IngredientCard = (props) => (
     <div className={props.class} onClick={()=>props.onClick(props.item._id)}>
         <Counter count={1}/>
         <img alt={props.item.name} src={props.item.image}/>
-        <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+        <div className={props.priceClass}>
             <p className="text text_type_digits-default">
                 {props.item.fat} &nbsp;
             </p>
