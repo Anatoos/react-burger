@@ -14,7 +14,7 @@ function App() {
               .then(response => {
                   if (response.ok) {
                       return response.json()
-                  } else { console.log('response is not ok')}
+                  } return Promise.reject(`Ошибка ${response.status}`)
               })
               .then(storage => {
                   setStorage(storage.data);
