@@ -1,6 +1,7 @@
 import React from "react";
 import appHeaderStyles from './AppHeader.module.css';
 import {Logo, BurgerIcon, ListIcon, ProfileIcon} from '@ya.praktikum/react-developer-burger-ui-components'
+import PropTypes from "prop-types";
 
 
 const AppHeader = () => {
@@ -52,7 +53,13 @@ const Profile = (props) => {
 
 
 
-
-
+MenuItem.propTypes ={
+    classnames: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+}
+Profile.propTypes ={
+    classnames: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+}
 
 export default AppHeader;
