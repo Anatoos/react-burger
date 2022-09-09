@@ -12,18 +12,18 @@ const BurgerConstructor = (props) => {
     const result = data.reduce((total, currentValue) => total + currentValue.price, 0);
     const Bun = data.filter((i) => i.type === 'bun');
     const burgerMain = data.filter((i) => i.type !== 'bun');
-    const [useModal, setUseModal] = React.useState(false);
+    const [isOpened, setIsOpened] = React.useState(false);
 
     const openModal = () => {
-        setUseModal(true);
+        setIsOpened(true);
     }
     const closeModal = () => {
-        setUseModal(false);
+        setIsOpened(false);
     }
 
     return (
         <div className={bcStyles.bc_wrapper}>
-            {useModal && (
+            {isOpened && (
                     <Modal close={closeModal}>
                         <OrderDetails/>
                     </Modal>
