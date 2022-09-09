@@ -22,15 +22,17 @@ const Modal = (props) =>{
         };
     }, [esc]);
     return ReactDOM.createPortal(
-                <div className={modalStyle.wrapper}>
+                <div>
                     <ModalOverlay close={props.close}/>
-                    <div className={modalStyle.modal}>
-                        <p className="text text_type_main-medium">
-                            {props.title}
-                        </p>
-                        <CloseIcon type="primary" onClick={props.close}/>
+                    <div className={modalStyle.wrapper}>
+                        <div className={modalStyle.modal}>
+                            <p className="text text_type_main-medium">
+                                {props.title}
+                            </p>
+                            <CloseIcon type="primary" onClick={props.close}/>
+                        </div>
+                        {props.children}
                     </div>
-                    {props.children}
                 </div>,
         modalRoot
     );
