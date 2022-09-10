@@ -1,0 +1,18 @@
+.wrapper {
+    position: fixed;
+    z-index: 2;
+    width: 600px;
+    max-height: 600px;
+    background-color: rgb(28, 28, 33);
+    border-radius: 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.modal{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px 40px 0 40px;
+}
