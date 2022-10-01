@@ -1,9 +1,9 @@
 import React from "react";
-import MOStyles from "./ModalOverlay.module.css"
+import styles from "./ModalOverlay.module.css"
 import PropTypes from "prop-types";
 const ModalOverlay = (props) => {
     return(
-            <div className={MOStyles.overlay} onClick={() => props.close()}>
+            <div className={styles.overlay} onClick={() => props.close()}>
             </div>
     )
 }

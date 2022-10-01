@@ -1,18 +1,18 @@
 import React from "react";
-import appHeaderStyles from './AppHeader.module.css';
-import {Logo, BurgerIcon, ListIcon, ProfileIcon} from '@ya.praktikum/react-developer-burger-ui-components'
+import styles from './AppHeader.module.css';
+import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import PropTypes from "prop-types";
 
 
 const AppHeader = () => {
     return(
-        <header className={appHeaderStyles.header}>
-            <div className={appHeaderStyles.logo}>
+        <header className={styles.header}>
+            <div className={styles.logo}>
                 <Logo />
             </div>
-            <div className={appHeaderStyles.header_menu}>
+            <div className={styles.header_menu}>
                 <Menu />
-                <Profile classnames={appHeaderStyles.navItem + ' text text_type_main-default text_color_inactive'} text='Личный кабинет'>
+                <Profile classnames={styles.navItem + ' text text_type_main-default text_color_inactive'} text='Личный кабинет'>
                     <ProfileIcon type="secondary"/>
                 </Profile>
             </div>
@@ -23,11 +23,11 @@ const AppHeader = () => {
 
 const Menu = () => {
     return(
-        <div className={appHeaderStyles.navbar}>
-            <MenuItem classnames={appHeaderStyles.navItem + ' text text_type_main-default'} text='Конструктор'>
+        <div className={styles.navbar}>
+            <MenuItem classnames={styles.navItem + ' text text_type_main-default'} text='Конструктор'>
                 <BurgerIcon type="primary"/>
             </MenuItem>
-            <MenuItem classnames={appHeaderStyles.navItem + ' text text_type_main-default text_color_inactive'} text='Лента заказов'>
+            <MenuItem classnames={styles.navItem + ' text text_type_main-default text_color_inactive'} text='Лента заказов'>
                 <ListIcon type="secondary"/>
             </MenuItem>
         </div>
