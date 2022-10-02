@@ -8,7 +8,9 @@ const AppHeader = () => {
     return(
         <header className={styles.header}>
             <div className={styles.logo}>
+                <a href="#">
                 <Logo />
+                </a>
             </div>
             <div className={styles.header_menu}>
                 <Menu />
@@ -24,12 +26,16 @@ const AppHeader = () => {
 const Menu = () => {
     return(
         <div className={styles.navbar}>
-            <MenuItem classnames={styles.navItem + ' text text_type_main-default'} text='Конструктор'>
+            <a href="#" className={styles.text_color_active}>
+            <MenuItem classnames={styles.navItem + ' text text_type_main-default text_color_active'} text='Конструктор'>
                 <BurgerIcon type="primary"/>
             </MenuItem>
+            </a>
+            <a href="#">
             <MenuItem classnames={styles.navItem + ' text text_type_main-default text_color_inactive'} text='Лента заказов'>
                 <ListIcon type="secondary"/>
             </MenuItem>
+            </a>
         </div>
     );
 }
@@ -44,10 +50,12 @@ const MenuItem = (props) =>{
 
 const Profile = (props) => {
     return(
+        <a href="#">
         <div className={props.classnames}>
             {props.children}
             <p> {props.text} </p>
         </div>
+        </a>
     );
 }
 
