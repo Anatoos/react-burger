@@ -133,7 +133,7 @@ const BurgerConstructor = () => {
             alert("Добавьте булку!");
             return;
         }
-        selectedItems.map((item) => result.ingredients.push(item._id));
+        selectedItems.forEach((item) => result.ingredients.push(item._id));
         result.ingredients.push(bun._id);
 
         dispatch(getOrderIdReq(result));
