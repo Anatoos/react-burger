@@ -1,5 +1,5 @@
 import {
-    GET_INGREDIENT,
+    GET_INGREDIENT_REQUEST,
     GET_INGREDIENT_FAILED,
     GET_INGREDIENT_SUCCESS
 } from './ingredient';
@@ -10,7 +10,7 @@ import { API } from '../../data/data';
 export function getIngredientData() {
     return function (dispatch) {
         dispatch({
-            type: GET_INGREDIENT
+            type: GET_INGREDIENT_REQUEST
         })
         fetch(API + 'ingredients').then(checkResponse)
             .then(response => {

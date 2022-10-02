@@ -1,5 +1,5 @@
 import {
-    GET_INGREDIENT,
+    GET_INGREDIENT_REQUEST,
     GET_INGREDIENT_SUCCESS,
     GET_INGREDIENT_FAILED,
     INCREASE_ITEM_COUNT,
@@ -32,7 +32,7 @@ const ingredientsInitialState = {
 
 export const ingredientsReducer = (state = ingredientsInitialState, action) => {
     switch (action.type) {
-        case GET_INGREDIENT: {
+        case GET_INGREDIENT_REQUEST: {
             return {
                 ...state,
                 ingredientsRequest: true,
