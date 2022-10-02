@@ -36,8 +36,8 @@ const BurgerIngredients = () => {
     const refSauce = useRef(null);
     const refMain = useRef(null);
 
+
     const setActiveIngredientId = (id) => {
-        window.history.pushState(null,null,'/ingredients/' + findElement(id)._id);
         dispatch({
             type:GET_CURRENT_ITEM,
             data: findElement(id)
@@ -45,7 +45,6 @@ const BurgerIngredients = () => {
     }
 
     const closeModal = () => {
-        window.history.pushState(null,null,'/');
         dispatch({
             type: CLEAR_CURRENT_ITEM
         })
@@ -92,7 +91,7 @@ const BurgerIngredients = () => {
                     {data.map((element, index) => (
                         element.type === 'sauce' && (
                             <IngredientCard
-                                key={element._id}
+                                key={index}
                                 item={element}
                                 priceClass={styles.item__price}
                                 class={styles.item}
@@ -108,7 +107,7 @@ const BurgerIngredients = () => {
                     {data.map((element, index) => (
                         element.type === 'main' && (
                             <IngredientCard
-                                key={element._id}
+                                key={index}
                                 item={element}
                                 priceClass={styles.item__price}
                                 class={styles.item}
