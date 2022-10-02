@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import styles from './BurgerConstructor.module.css';
-import { ConstructorElement, DragIcon, CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components'
+import { ConstructorElement, CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components'
 import Modal from '../Modal/Modal'
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { useDispatch, useSelector } from "react-redux";
@@ -150,7 +150,7 @@ const BurgerConstructor = () => {
                     <OrderDetails number={orderId}/>
                 </Modal>
             )}
-            <div className={styles.constructor} ref={dropTarget} style={{opacity}}>
+            <div ref={dropTarget} style={{opacity}}>
                 {bun.name === undefined && selectedItems.length < 1 && (
                     <div>
                         <p className="text text_type_main-large">
