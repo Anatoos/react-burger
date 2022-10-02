@@ -8,7 +8,7 @@ const OrderDetails = (props) => {
     return (
         <div className={styles.wrapper}>
             <p className={styles.orderNo + ' text text_type_digits-large'}>
-                {props.orderId}
+                {props.number}
             </p>
             <p className="text text_type_main-default">
                 Идентификатор заказа

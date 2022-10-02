@@ -147,7 +147,7 @@ const BurgerConstructor = () => {
         <div className={styles.bc_wrapper}>
             {orderId !== 0 && loadingComplete && (
                 <Modal close={closeModal}>
-                    <OrderDetails orderId={orderId}/>
+                    <OrderDetails number={orderId}/>
                 </Modal>
             )}
             <div className={styles.constructor} ref={dropTarget} style={{opacity}}>
@@ -173,16 +173,15 @@ const BurgerConstructor = () => {
                 )}
                 {selectedItems.length > 0 && (
                 <div className={styles.list} ref={dropTargetSort}>
+                    <div className={styles.item}>
                         {selectedItems.map ((item) => (
-                            <div className={styles.item}>
-                                <DragIcon type='primary'/>
                                     <SelectedItems
                                         key={item.uid}
                                         item={item}
                                         dropItem={dropItem}
                                     />
-                            </div>
                         ))}
+                    </div>
                 </div>
                 )}
                 {bun.name !== undefined && (

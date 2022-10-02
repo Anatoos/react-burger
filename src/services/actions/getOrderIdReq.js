@@ -21,7 +21,7 @@ export function getOrderIdReq(post) {
             .then(response => {
                 dispatch({
                     type: GET_ORDER_ID_SUCCESS,
-                    data: response.order.orderId
+                    data: response.order.number
                 })
 
             }).catch((error) => {
