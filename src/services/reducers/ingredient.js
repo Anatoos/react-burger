@@ -58,7 +58,7 @@ export const ingredientsReducer = (state = ingredientsInitialState, action) => {
             };
         }
         case INCREASE_ITEM_COUNT: {
-            const arr = state.ingredientsData;
+            const arr = [...state.ingredientsData];
             const index = arr.findIndex(item => item._id === action.id);
             if(index !== -1) {
                 arr[index].count += 1;
