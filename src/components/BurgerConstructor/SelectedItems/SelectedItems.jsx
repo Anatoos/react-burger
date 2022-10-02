@@ -7,9 +7,7 @@ import PropTypes from "prop-types";
 
 const SelectedItems = (props) => {
     const selectedItemId = props.item.uid;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const ref = useRef(null);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [{opacityItem}, drag] = useDrag({
         type: 'selectedItem',
         item: {selectedItemId, ref},
