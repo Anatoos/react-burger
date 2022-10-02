@@ -91,7 +91,6 @@ const BurgerIngredients = () => {
         if (current === 'bun') refBun.current.scrollIntoView(true);
         if (current === 'sauce') refSauce.current.scrollIntoView(true);
         if (current === 'main') refMain.current.scrollIntoView(true);
-    console.log(current);
     };
     return (
         <div>
