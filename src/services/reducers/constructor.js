@@ -45,8 +45,9 @@ export const constructorOrderReducer = (state = constructorInitialState, action)
             const index = state.selectedItems.findIndex((item) => item.uid === action.id);
             const indexTo = index + action.difference;
             const item = state.selectedItems[index];
-            state.selectedItems.splice(index, 1);
-            state.selectedItems.splice(indexTo, 0, item)
+            const selectedItems = [...state.selectedItems];
+            selectedItems.splice(index, 1);
+            selectedItems.splice(indexTo, 0, item)
             return {
                 ...state,
                 selectedItems: [...state.selectedItems]
