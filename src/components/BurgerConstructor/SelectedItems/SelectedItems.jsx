@@ -5,7 +5,7 @@ import { useDrag } from "react-dnd";
 import { ingredientType } from "../../../types/Ingredient";
 import PropTypes from "prop-types";
 
-const selectedItems = (props) => {
+const SelectedItems = (props) => {
     const selectedItemId = props.item.uid;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const ref = useRef(null);
@@ -31,9 +31,9 @@ const selectedItems = (props) => {
     )
 }
 
-selectedItems.propTypes = {
+SelectedItems.propTypes = {
     item: ingredientType.isRequired,
     dropItem: PropTypes.func.isRequired,
 }
 
-export default selectedItems;
+export default SelectedItems;

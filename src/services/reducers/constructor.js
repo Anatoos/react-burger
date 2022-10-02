@@ -21,7 +21,10 @@ export const constructorOrderReducer = (state = constructorInitialState, action)
         case SET_ITEM: {
             return {
                 ...state,
-                selectedItems: [...state.selectedItems, action.data]
+                selectedItems: [...state.selectedItems, {
+                    ...action.data,
+                    uid: action.uid
+                }]
             }
         }
         case SET_BUN: {
