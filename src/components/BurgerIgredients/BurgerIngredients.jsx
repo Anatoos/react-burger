@@ -72,7 +72,6 @@ const BurgerIngredients = () => {
 
     const Tabs = () => {
         const current = useSelector(state => state.tab.activeTab)
-        console.log(current);
         return (
             <div className={styles.tabs}>
                 <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
