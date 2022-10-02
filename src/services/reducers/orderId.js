@@ -1,5 +1,5 @@
 import {
-    GET_ORDER_ID,
+    GET_ORDER_ID_REQUEST,
     GET_ORDER_ID_SUCCESS,
     GET_ORDER_ID_FAILED,
     CLEAR_ORDER_ID
@@ -14,7 +14,7 @@ const orderIdInitialState = {
 
 export const orderIdReducer = (state = orderIdInitialState, action) => {
     switch (action.type) {
-        case GET_ORDER_ID: {
+        case GET_ORDER_ID_REQUEST: {
             return {
                 ...state,
                 orderIdRequest: true,

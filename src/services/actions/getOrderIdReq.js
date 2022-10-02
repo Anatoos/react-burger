@@ -1,5 +1,5 @@
 import {
-    GET_ORDER_ID,
+    GET_ORDER_ID_REQUEST,
     GET_ORDER_ID_FAILED,
     GET_ORDER_ID_SUCCESS
 } from './orderId';
@@ -9,7 +9,7 @@ import { API } from '../../data/data'
 export function getOrderIdReq(post) {
     return function (dispatch) {
         dispatch({
-            type: GET_ORDER_ID
+            type: GET_ORDER_ID_REQUEST
         })
         fetch(API + 'orders', {
             method: 'POST',
