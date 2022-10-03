@@ -1,17 +1,12 @@
 .bc_wrapper {
     margin-top:104px;
+    width: 600px;
 }
-.constructor {
+.selected_item {
     display: flex;
     align-items: center;
-    flex-direction: column;
-}
-.item {
-    display: flex;
+    gap: 8px;
     margin: 16px 0;
-    width:100%;
-    gap:13px;
-    align-items: center;
 }
 .bun{
     width:100%;

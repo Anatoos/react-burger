@@ -36,6 +36,7 @@
     width:272px;
     gap:8px;
     margin-bottom:32px;
+    position:relative;
 }
 .price{
     display: flex;

@@ -1,49 +1,50 @@
 import React from "react";
-import nutritionStyle from "./IngredienDetails.module.css";
-import {ingredientType} from "../../types/Ingredient";
+import styles from "./IngredienDetails.module.css";
+import { useSelector } from "react-redux";
 
-const IngredientDetails = (props) => {
+const IngredientDetails = () => {
+    const data = useSelector( state => state.currentItem.currentItem)
     return (
-        <div className={nutritionStyle.wrapper}>
+        <div className={styles.wrapper}>
             <div>
-                <img src={props.data.image_large} alt={props.data.name}/>
+                <img src={data.image_large} alt={data.name}/>
             </div>
-            <div className={nutritionStyle.name}>
+            <div className={styles.name}>
                 <p className="text text_type_main-medium">
-                    {props.data.name}
+                    {data.name}
                 </p>
             </div>
-            <div className={nutritionStyle.nutritions}>
-                <div className={nutritionStyle.nutrition}>
+            <div className={styles.nutritions}>
+                <div className={styles.nutrition}>
                     <p className="text text_type_main-small text_color_inactive">
                         Калории,ккал
                     </p>
                     <p className="text text_type_main-small text_color_inactive">
-                        {props.data.calories}
+                        {data.calories}
                     </p>
                 </div>
-                <div className={nutritionStyle.nutrition}>
+                <div className={styles.nutrition}>
                     <p className="text text_type_main-small text_color_inactive">
                         Белки, г
                     </p>
                     <p className="text text_type_main-small text_color_inactive">
-                        {props.data.carbohydrates}
+                        {data.carbohydrates}
                     </p>
                 </div>
-                <div className={nutritionStyle.nutrition} >
+                <div className={styles.nutrition} >
                     <p className="text text_type_main-small text_color_inactive">
                         Жиры, г
                     </p>
                     <p className="text text_type_main-small text_color_inactive">
-                        {props.data.fat}
+                        {data.fat}
                     </p>
                 </div>
-                <div className={nutritionStyle.nutrition}>
+                <div className={styles.nutrition}>
                     <p className="text text_type_main-small text_color_inactive">
                         Углеводы, г
                     </p>
                     <p className="text text_type_main-small text_color_inactive">
-                        {props.data.proteins}
+                        {data.proteins}
                     </p>
                 </div>
 
@@ -51,7 +52,4 @@ const IngredientDetails = (props) => {
         </div>
     )
 }
-IngredientDetails.propTypes = {
-    data: ingredientType.isRequired
-};
 export default IngredientDetails;
