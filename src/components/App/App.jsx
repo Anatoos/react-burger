@@ -19,32 +19,38 @@ function App() {
       <>
           <Router>
               <AppHeader />
-              <Switch>
-                  <Route path='/' exact={true} >
-                      <Home />
-                  </Route>
-                  <Route path='/login' exact={true} >
-                      <Login />
-                  </Route>
-                  <Route path='/profile' exact={true} >
-                      <Profile />
-                  </Route>
-                  <Route path='/register' exact={true} >
-                      <Register />
-                  </Route>
-                  <Route path='/forgot-password' exact={true} >
-                      <ForgotPassword />
-                  </Route>
-                  <Route path='/reset-password' exact={true} >
-                      <ResetPassword />
-                  </Route>
-                  <Route path='/ingredient/:id' exact={true} >
-                      <Ingredient />
-                  </Route>
-                  <Route>
-                      <NotFound404 />
-                  </Route>
-              </Switch>
+              <section>
+                  <div className={styles.wrapper}>
+                      <div className={styles.content}>
+                          <Switch>
+                              <Route path='/' exact={true} >
+                                  <Home />
+                              </Route>
+                              <Route path='/login' exact={true} >
+                                  <Login />
+                              </Route>
+                              <Route path='/profile' exact={true} >
+                                  <Profile />
+                              </Route>
+                              <Route path='/register' exact={true} >
+                                  <Register />
+                              </Route>
+                              <Route path='/forgot-password' exact={true} >
+                                  <ForgotPassword />
+                              </Route>
+                              <Route path='/reset-password' exact={true} >
+                                  <ResetPassword />
+                              </Route>
+                              <Route path='/ingredient/:id' exact={true} >
+                                  <Ingredient />
+                              </Route>
+                              <Route>
+                                  <NotFound404 />
+                              </Route>
+                          </Switch>
+                      </div>
+                  </div>
+              </section>
           </Router>
       </>
 
