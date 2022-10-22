@@ -4,7 +4,7 @@ import AppHeader from '../AppHeader/AppHeader';
 import { getIngredientData } from "../../services/actions/getIngredient";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ForgotPassword, Home, Ingredient, Login, NotFound404, Profile, Register, ResetPassword } from '../../pages/index'
+import { ForgotPassword, Home, Ingredient, Login, NotFound404, Profile, Register, ResetPassword } from '../../pages'
 
 
 function App() {

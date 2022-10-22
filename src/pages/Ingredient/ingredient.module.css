@@ -1,0 +1,8 @@
+.main_block{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height: 800px;
+}
