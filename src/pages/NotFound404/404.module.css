@@ -1,3 +1,14 @@
 .main_block{
     composes: main_block from '../Register/register.module.css';
+    z-index: 1;
+}
+.image{
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    opacity: 1;
+    transition: all 3s;
+}
+.text{
+    color: indigo;
 }

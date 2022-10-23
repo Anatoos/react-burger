@@ -1,73 +1,49 @@
 import React from "react";
 import styles from './AppHeader.module.css';
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import PropTypes from "prop-types";
+import { useLocation, Link } from "react-router-dom";
 
 
-const AppHeader = () => {
-    return(
-        <header className={styles.header}>
-            <div className={styles.logo}>
-                <a href="#">
-                <Logo />
-                </a>
-            </div>
-            <div className={styles.header_menu}>
-                <Menu />
-                <Profile classnames={styles.navItem + ' text text_type_main-default text_color_inactive'} text='Личный кабинет'>
-                    <ProfileIcon type="secondary"/>
-                </Profile>
-            </div>
-
-        </header>
+const AppHeader = () =>{
+    const {pathname} = useLocation();
+    const isMain = pathname === '/';
+    const isOrders = pathname === '/orders';
+    return (
+        <section className={styles.header}>
+            <section className={styles.wrapper}>
+                <section className={styles.menu}>
+                    <Link to={'/'}>
+                        <section className={styles.menuItem}>
+                            <BurgerIcon type={ isMain ? "primary" : "secondary" }/>
+                            <p className={ !isMain ? "text text_type_main-default":"text text_type_main-default " + styles.active}>
+                                Конструктор
+                            </p>
+                        </section>
+                    </Link>
+                    <Link to={'/orders'}>
+                        <section className={styles.menuItem}>
+                            <ListIcon type={ isOrders ? "primary" : "secondary" }/>
+                            <p className={ !isOrders ? "text text_type_main-default":"text text_type_main-default " + styles.active}>
+                                Лента заказов
+                            </p>
+                        </section>
+                    </Link>
+                </section>
+                <Logo/>
+                <Entry path={pathname} />
+            </section>
+        </section>
     );
 }
-
-const Menu = () => {
-    return(
-        <div className={styles.navbar}>
-            <a href="#" className={styles.text_color_active}>
-            <MenuItem classnames={styles.navItem + ' text text_type_main-default text_color_active'} text='Конструктор'>
-                <BurgerIcon type="primary"/>
-            </MenuItem>
-            </a>
-            <a href="#">
-            <MenuItem classnames={styles.navItem + ' text text_type_main-default text_color_inactive'} text='Лента заказов'>
-                <ListIcon type="secondary"/>
-            </MenuItem>
-            </a>
-        </div>
+const Entry = (path) => {
+    return (
+        <Link className={path.path === '/profile' ? styles.entry + ' ' + styles.active : styles.entry} to='/profile'>
+            <ProfileIcon type={path.path ==='/profile' ? "primary" : "secondary"}/>
+            <p className="text text_type_main-default">
+                Личный кабинет
+            </p>
+        </Link>
     );
-}
-const MenuItem = (props) =>{
-    return(
-        <div className={props.classnames}>
-            {props.children}
-            <p> {props.text} </p>
-        </div>
-    );
-}
-
-const Profile = (props) => {
-    return(
-        <a href="#">
-        <div className={props.classnames}>
-            {props.children}
-            <p> {props.text} </p>
-        </div>
-        </a>
-    );
-}
-
-
-
-MenuItem.propTypes ={
-    classnames: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired
-}
-Profile.propTypes ={
-    classnames: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired
-}
+};
 
 export default AppHeader;

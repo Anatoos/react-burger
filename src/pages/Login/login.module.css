@@ -1,3 +1,16 @@
 .main_block{
     composes: main_block from '../Register/register.module.css';
 }
+.input {
+    composes: input from '../Register/register.module.css'
+}
+.title {
+    composes: title from '../../components/BurgerIgredients/BurgerIngredients.module.css';
+}
+.registration_block {
+    composes: registration_block from '../Register/register.module.css';
+}
+
+.button {
+    composes: button from '../Register/register.module.css';
+}

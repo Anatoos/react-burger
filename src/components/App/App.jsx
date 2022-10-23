@@ -4,6 +4,7 @@ import AppHeader from '../AppHeader/AppHeader';
 import { getIngredientData } from "../../services/actions/getIngredient";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ProtectedRoute } from "../ProtectedRoute";
 import { ForgotPassword, Home, Ingredient, Login, NotFound404, Profile, Register, ResetPassword } from '../../pages'
 
 
@@ -12,7 +13,7 @@ function App() {
 
     useEffect(()=>{
         dispatch(getIngredientData());
-    },[])
+    },[dispatch])
     const isLoading = useSelector(state => {
         return state.ingredients.ingredientsSuccess});
   return isLoading ? (
@@ -29,9 +30,9 @@ function App() {
                               <Route path='/login' exact={true} >
                                   <Login />
                               </Route>
-                              <Route path='/profile' exact={true} >
+                              <ProtectedRoute path='/profile' exact={true} >
                                   <Profile />
-                              </Route>
+                              </ProtectedRoute>
                               <Route path='/register' exact={true} >
                                   <Register />
                               </Route>
@@ -41,7 +42,7 @@ function App() {
                               <Route path='/reset-password' exact={true} >
                                   <ResetPassword />
                               </Route>
-                              <Route path='/ingredient/:id' exact={true} >
+                              <Route path='/ingredients/:id'>
                                   <Ingredient />
                               </Route>
                               <Route>

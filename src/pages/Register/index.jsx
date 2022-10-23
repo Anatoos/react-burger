@@ -1,25 +1,49 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { Input , Button} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './register.module.css';
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { registerNewUser } from "../../services/actions/auth";
 
 export const Register = () => {
-    const [name, setName] = React.useState('Имя');
-    const [email, setEmail] = React.useState('E-mail');
-    const [password, setPassword] = React.useState('Пароль');
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
     const [passwordStatus, setPasswordStatus] = React.useState(true);
     const passwordRef = React.useRef(null);
+    const dispatch = useDispatch();
+    const needToRedirect = useSelector(store => store.profile.registerSuccess)
     const onPasswordClick = () => {
         setTimeout(() => passwordRef.current.focus(), 0)
         setPasswordStatus(!passwordStatus);
     };
+    const history = useHistory();
+    const redirectToPath = useCallback(
+        (path) => {
+            history.replace({pathname: path});
+        },
+        [history]
+    );
 
+    useEffect(() => {
+        needToRedirect && redirectToPath('/')
+    }, [needToRedirect])
+
+
+    const register = () => {
+        let form = {
+            email: email,
+            password: password,
+            name: name
+        };
+        dispatch(registerNewUser(form));
+        alert('ok');
+    }
     return(
         <div className={styles.main_block}>
             <div className={styles.title}>
                 <p>
-                    Регистраци
+                    Регистрация
                 </p>
             </div>
             <div className={styles.input}>

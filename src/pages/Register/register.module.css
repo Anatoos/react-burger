@@ -1,14 +1,15 @@
 .main_block{
-    margin: 180px auto 0 auto;
+    margin: 100px auto 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
-    width: 480px;
+    width: 600px;
     height: 800px;
 }
 .input {
-   display: flex;
-   margin: 0 auto 24px auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
 }
 
 .button {
@@ -16,5 +17,8 @@
 }
 
 .registration_block {
-   margin-top: 80px;
+   margin-top: 40px;
+}
+.title {
+    composes: title from '../../components/BurgerIgredients/BurgerIngredients.module.css';
 }
