@@ -5,6 +5,7 @@ import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { compose, createStore , applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { BrowserRouter as Router } from "react-router-dom";
 import { rootReducer } from "./services/reducers";
 import { Provider } from 'react-redux';
 
@@ -23,7 +24,9 @@ const store = createStore(rootReducer, enhancer);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <App />
+            <Router>
+                <App />
+            </Router>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

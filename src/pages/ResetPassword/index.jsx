@@ -37,39 +37,41 @@ export const ResetPassword = () => {
                     Восстановление пароля
                 </p>
             </h1>
-            <div className={styles.input}>
-                <Input
-                    type={ passwordStatus ? 'password' : 'text' }
-                    placeholder={'Пароль'}
-                    onChange={e => setPassword(e.target.value)}
-                    icon={ passwordStatus ? 'ShowIcon' : 'HideIcon' }
-                    value={password}
-                    name={'name'}
-                    error={false}
-                    ref={pwdRef}
-                    onIconClick={onPasswordClick}
-                    errorText={'Ошибка'}
-                    size={'default'}
-                />
-            </div>
-            <div className={styles.input}>
-                <Input
-                    type={'text'}
-                    placeholder={'Введите код из письма'}
-                    onChange={e => setCode(e.target.value)}
-                    value={code}
-                    name={'name'}
-                    error={false}
-                    ref={codeRef}
-                    errorText={'Ошибка'}
-                    size={'default'}
-                />
-            </div>
-            <div>
-                <Button type="primary" size="large" onClick={!loading ? () => reset(password, code) : () => {}}>
-                    {loading ? 'Происходит запрос' : 'Восстановить'}
-                </Button>
-            </div>
+            <form onSubmit={!loading ? () => reset(password, code) : () => {}}>
+                <div className={styles.input}>
+                    <Input
+                        type={ passwordStatus ? 'password' : 'text' }
+                        placeholder={'Пароль'}
+                        onChange={e => setPassword(e.target.value)}
+                        icon={ passwordStatus ? 'ShowIcon' : 'HideIcon' }
+                        value={password}
+                        name={'name'}
+                        error={false}
+                        ref={pwdRef}
+                        onIconClick={onPasswordClick}
+                        errorText={'Ошибка'}
+                        size={'default'}
+                    />
+                </div>
+                <div className={styles.input}>
+                    <Input
+                        type={'text'}
+                        placeholder={'Введите код из письма'}
+                        onChange={e => setCode(e.target.value)}
+                        value={code}
+                        name={'name'}
+                        error={false}
+                        ref={codeRef}
+                        errorText={'Ошибка'}
+                        size={'default'}
+                    />
+                </div>
+                <div>
+                    <Button type="primary" size="large" >
+                        {loading ? 'Происходит запрос' : 'Восстановить'}
+                    </Button>
+                </div>
+            </form>
             <div className={styles.infoBlock}>
                 <p className="text text_type_main-small">
                     Вспомнили пароль? <Link to="/login">Войти</Link>

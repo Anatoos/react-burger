@@ -29,28 +29,30 @@ export const ForgotPassword = () => {
                         Регистрация
                     </p>
                 </div>
-            <div className={styles.input}>
-                <Input
-                    type={'email'}
-                    placeholder={'E-mail'}
-                    onChange={e => setEmailToReset(e.target.value)}
-                    value={emailToReset}
-                    name={'email'}
-                    error={false}
-                    errorText={'Ошибка'}
-                    size={'default'}
-                />
-            </div>
-            <div className={styles.button}>
-                <Button type="primary" size="large" onClick={!loading ? ()=>{next(emailToReset)} : ''}>
-                    {loading ? 'Происходит запрос' : 'Восстановить'}
-                </Button>
-            </div>
-            <div className={styles.registration_block}>
-                <p className="text text_type_main-small">
-                    Вспомнили пароль? <Link to="/login">Войти</Link>
-                </p>
-            </div>
+                <form onSubmit={!loading ? ()=>{next(emailToReset)} : ''}>
+                    <div className={styles.input}>
+                        <Input
+                            type={'email'}
+                            placeholder={'E-mail'}
+                            onChange={e => setEmailToReset(e.target.value)}
+                            value={emailToReset}
+                            name={'email'}
+                            error={false}
+                            errorText={'Ошибка'}
+                            size={'default'}
+                        />
+                    </div>
+                    <div className={styles.button}>
+                        <Button type="primary" size="large">
+                            {loading ? 'Происходит запрос' : 'Восстановить'}
+                        </Button>
+                    </div>
+                </form>
+                <div className={styles.registration_block}>
+                    <p className="text text_type_main-small">
+                        Вспомнили пароль? <Link to="/login">Войти</Link>
+                    </p>
+                </div>
         </div>
     )
 }

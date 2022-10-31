@@ -104,69 +104,71 @@ export const Profile = () => {
                 </div>
             </div>
             <div className={styles.data}>
-                <div className={styles.dataItem}>
-                    <Input
-                        type={'text'}
-                        placeholder={'Имя'}
-                        onChange={e => {
-                            setName(e.target.value);
-                            setIsDefault(false)
-                        }}
-                        icon={'EditIcon'}
-                        value={name || ''}
-                        name={'name'}
-                        error={false}
-                        ref={nameRef}
-                        errorText={'Ошибка'}
-                        size={'default'}
-                    />
-                </div>
-                <div className={styles.dataItem}>
-                    <Input
-                        type={'email'}
-                        placeholder={'E-mail'}
-                        onChange={e => {
-                            setEmail(e.target.value);
-                            setIsDefault(false)
-                        }}
-                        icon={'EditIcon'}
-                        value={email || ''}
-                        name={'name'}
-                        error={false}
-                        ref={emailRef}
-                        errorText={'Ошибка'}
-                        size={'default'}
-                    />
-                </div>
-                <div className={styles.dataItem}>
-                    <Input
-                        type={'password'}
-                        placeholder={'Пароль'}
-                        onChange={e => {
-                            setPassword(e.target.value);
-                            setIsDefault(false)
-                        }}
-                        icon={'EditIcon'}
-                        value={password || ''}
-                        name={'name'}
-                        error={false}
-                        ref={pwdRef}
-                        errorText={'Ошибка'}
-                        size={'default'}
-                    />
-                </div>
-                <div className={styles.button}>
-                    <Button type="primary" size="large" onClick={save}>
-                        Сохранить
-                    </Button>
-                </div>
-                {!isDefault && (
-                    <div className={styles.button}>
-                        <Button type="primary" size="large" onClick={cancel}>
-                            Отменить
-                        </Button>
+                <form onSubmit={save}>
+                    <div className={styles.dataItem}>
+                        <Input
+                            type={'text'}
+                            placeholder={'Имя'}
+                            onChange={e => {
+                                setName(e.target.value);
+                                setIsDefault(false)
+                            }}
+                            icon={'EditIcon'}
+                            value={name || ''}
+                            name={'name'}
+                            error={false}
+                            ref={nameRef}
+                            errorText={'Ошибка'}
+                            size={'default'}
+                        />
                     </div>
-                )}
+                    <div className={styles.dataItem}>
+                        <Input
+                            type={'email'}
+                            placeholder={'E-mail'}
+                            onChange={e => {
+                                setEmail(e.target.value);
+                                setIsDefault(false)
+                            }}
+                            icon={'EditIcon'}
+                            value={email || ''}
+                            name={'name'}
+                            error={false}
+                            ref={emailRef}
+                            errorText={'Ошибка'}
+                            size={'default'}
+                        />
+                    </div>
+                    <div className={styles.dataItem}>
+                        <Input
+                            type={'password'}
+                            placeholder={'Пароль'}
+                            onChange={e => {
+                                setPassword(e.target.value);
+                                setIsDefault(false)
+                            }}
+                            icon={'EditIcon'}
+                            value={password || ''}
+                            name={'name'}
+                            error={false}
+                            ref={pwdRef}
+                            errorText={'Ошибка'}
+                            size={'default'}
+                        />
+                    </div>
+                    <div className={styles.button}>
+                        <Button type="primary" size="large" >
+                            Сохранить
+                        </Button>
+                     </div>
+                    {!isDefault && (
+                        <div className={styles.button}>
+                            <Button type="primary" size="large" onClick={cancel}>
+                                Отменить
+                            </Button>
+                        </div>
+                    )}
+                </form>
             </div>
         </div>
     )

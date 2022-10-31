@@ -112,7 +112,6 @@ export const registerNewUser = (data) => {
             .then(checkResponse)
             .then(res => {
                 makeAuthToken(res);
-                makeAuthToken(res);
                 localStorage.setItem('refreshToken',res.refreshToken);
                 dispatch({
                     type: GET_REGISTRATION_INFO_SUCCESS,

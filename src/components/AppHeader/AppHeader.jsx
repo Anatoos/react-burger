@@ -5,7 +5,7 @@ import { useLocation, Link } from "react-router-dom";
 
 
 const AppHeader = () =>{
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
     const isMain = pathname === '/';
     const isOrders = pathname === '/orders';
     return (

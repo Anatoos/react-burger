@@ -54,6 +54,7 @@ const BurgerIngredients = () => {
         }
     }
     const setActiveIngredientId = (id) => {
+        window.history.pushState(null,null,'/ingredients/' + findElement(id)._id);
         dispatch({
             type:GET_CURRENT_ITEM,
             data: findElement(id)
@@ -61,6 +62,7 @@ const BurgerIngredients = () => {
     }
 
     const closeModal = () => {
+        window.history.pushState(null,null,'/');
         dispatch({
             type: CLEAR_CURRENT_ITEM
         })

@@ -37,39 +37,41 @@ export const Login = () => {
                         Вход
                     </p>
                 </h1>
-                <div className={styles.input}>
-                    <Input
-                        type={'email'}
-                        placeholder={'E-mail'}
-                        onChange={e => setEmail(e.target.value)}
-                        value={email}
-                        name={'email'}
-                        error={false}
-                        ref={emailRef}
-                        errorText={'Ошибка'}
-                        size={'default'}
-                    />
-                </div>
-                <div className={styles.input}>
-                    <Input
-                        type={ pwdStatus ? 'password' : 'text' }
-                        placeholder={'Пароль'}
-                        onChange={e => setPwd(e.target.value)}
-                        icon={ pwdStatus ? 'ShowIcon' : 'HideIcon' }
-                        value={pwd}
-                        name={'name'}
-                        error={false}
-                        ref={pwdRef}
-                        onIconClick={onPasswordClick}
-                        errorText={'Ошибка'}
-                        size={'default'}
-                    />
-                </div>
-                <div className={styles.button}>
-                    <Button type="primary" size="large" onClick={enter}>
-                        Войти
-                    </Button>
-                </div>
+                <form onSubmit={enter}>
+                    <div className={styles.input}>
+                        <Input
+                            type={'email'}
+                            placeholder={'E-mail'}
+                            onChange={e => setEmail(e.target.value)}
+                            value={email}
+                            name={'email'}
+                            error={false}
+                            ref={emailRef}
+                            errorText={'Ошибка'}
+                            size={'default'}
+                        />
+                    </div>
+                    <div className={styles.input}>
+                        <Input
+                            type={ pwdStatus ? 'password' : 'text' }
+                            placeholder={'Пароль'}
+                            onChange={e => setPwd(e.target.value)}
+                            icon={ pwdStatus ? 'ShowIcon' : 'HideIcon' }
+                            value={pwd}
+                            name={'name'}
+                            error={false}
+                            ref={pwdRef}
+                            onIconClick={onPasswordClick}
+                            errorText={'Ошибка'}
+                            size={'default'}
+                        />
+                    </div>
+                    <div className={styles.button}>
+                        <Button type="primary" size="large">
+                            Войти
+                        </Button>
+                    </div>
+                </form>
                 <div className={styles.registration_block}>
                     <p className="text text_type_main-small">
                         Вы новый пользователь? <Link to="/register">Зарегистрироваться</Link>

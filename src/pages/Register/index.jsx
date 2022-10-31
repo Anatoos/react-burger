@@ -46,50 +46,52 @@ export const Register = () => {
                     Регистрация
                 </p>
             </div>
-            <div className={styles.input}>
-                <Input
-                    type={'text'}
-                    placeholder={'Имя'}
-                    onChange={e => setName(e.target.value)}
-                    value={name}
-                    name={'name'}
-                    error={false}
-                    errorText={'Ошибка'}
-                    size={'default'}
-                />
-            </div>
-            <div className={styles.input}>
-                <Input
-                    type={'email'}
-                    placeholder={'E-mail'}
-                    onChange={e => setEmail(e.target.value)}
-                    value={email}
-                    name={'email'}
-                    error={false}
-                    errorText={'Ошибка'}
-                    size={'default'}
-                />
-            </div>
-            <div className={styles.input}>
-                <Input
-                    type={ passwordStatus? 'password' : 'text'}
-                    placeholder={'Пароль'}
-                    onChange={e => setPassword(e.target.value)}
-                    value={password}
-                    ref={passwordRef}
-                    name={'password'}
-                    error={false}
-                    errorText={'Ошибка'}
-                    size={'default'}
-                    icon={ passwordStatus ? 'ShowIcon' : 'HideIcon'}
-                    onIconClick={onPasswordClick}
-                />
-            </div>
-            <div className={styles.button}>
-                <Button type="primary" size="large" onClick={register}>
-                    Зарегистрироваться
-                </Button>
-            </div>
+            <form onSubmit={register} >
+                <div className={styles.input}>
+                    <Input
+                        type={'text'}
+                        placeholder={'Имя'}
+                        onChange={e => setName(e.target.value)}
+                        value={name}
+                        name={'name'}
+                        error={false}
+                        errorText={'Ошибка'}
+                        size={'default'}
+                    />
+                </div>
+                <div className={styles.input}>
+                    <Input
+                        type={'email'}
+                        placeholder={'E-mail'}
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}
+                        name={'email'}
+                        error={false}
+                        errorText={'Ошибка'}
+                        size={'default'}
+                    />
+                </div>
+                <div className={styles.input}>
+                    <Input
+                        type={ passwordStatus? 'password' : 'text'}
+                        placeholder={'Пароль'}
+                        onChange={e => setPassword(e.target.value)}
+                        value={password}
+                        ref={passwordRef}
+                        name={'password'}
+                        error={false}
+                        errorText={'Ошибка'}
+                        size={'default'}
+                        icon={ passwordStatus ? 'ShowIcon' : 'HideIcon'}
+                        onIconClick={onPasswordClick}
+                    />
+                </div>
+                <div className={styles.button}>
+                    <Button type="primary" size="large">
+                        Зарегистрироваться
+                    </Button>
+                </div>
+            </form>
             <div className={styles.registration_block}>
                 <p className="text text_type_main-small">
                     Уже зарегистрированы? <Link to="/login">Войти</Link>
