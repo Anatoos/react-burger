@@ -29,7 +29,7 @@ export const ForgotPassword = () => {
                         Регистрация
                     </p>
                 </div>
-                <form onSubmit={!loading ? ()=>{next(emailToReset)} : ''}>
+                <form onSubmit={!loading ? (e)=>{ e.preventDefault(); next(emailToReset)} : ''}>
                     <div className={styles.input}>
                         <Input
                             type={'email'}

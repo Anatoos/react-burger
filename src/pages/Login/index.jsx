@@ -19,7 +19,8 @@ export const Login = () => {
     const location = useLocation();
     const refer = location.state && location.state.from;
     const dispatch = useDispatch();
-    const enter = () => {
+    const enter = (e) => {
+        e.preventDefault();
         let form = {
             email: email,
             password: pwd

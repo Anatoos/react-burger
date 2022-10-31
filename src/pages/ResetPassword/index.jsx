@@ -37,7 +37,7 @@ export const ResetPassword = () => {
                     Восстановление пароля
                 </p>
             </h1>
-            <form onSubmit={!loading ? () => reset(password, code) : () => {}}>
+            <form onSubmit={!loading ? (e) => {e.preventDefault();reset(password, code)} : () => {}}>
                 <div className={styles.input}>
                     <Input
                         type={ passwordStatus ? 'password' : 'text' }

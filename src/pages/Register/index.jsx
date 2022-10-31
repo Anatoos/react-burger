@@ -30,7 +30,8 @@ export const Register = () => {
     }, [needToRedirect])
 
 
-    const register = () => {
+    const register = (e) => {
+        e.preventDefault();
         let form = {
             email: email,
             password: password,

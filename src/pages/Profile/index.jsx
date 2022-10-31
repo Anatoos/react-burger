@@ -62,7 +62,8 @@ export const Profile = () => {
     }, [user])
 
 
-    const save = useCallback(() => {
+    const save = useCallback((e) => {
+        e.preventDefault();
         let form = {
             email: email,
             name: name
