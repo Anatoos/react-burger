@@ -26,7 +26,7 @@ export const ForgotPassword = () => {
         <div className={styles.main_block}>
                 <div className={styles.title + ' text text_type_main-medium'}>
                     <p>
-                        Регистрация
+                        Восстановление пароля
                     </p>
                 </div>
                 <form onSubmit={!loading ? (e)=>{ e.preventDefault(); next(emailToReset)} : ''}>
