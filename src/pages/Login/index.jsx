@@ -21,7 +21,7 @@ export const Login = () => {
     const dispatch = useDispatch();
     const enter = (e) => {
         e.preventDefault();
-        let form = {
+        const form = {
             email: email,
             password: pwd
         };

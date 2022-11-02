@@ -64,7 +64,7 @@ export const Profile = () => {
 
     const save = useCallback((e) => {
         e.preventDefault();
-        let form = {
+        const form = {
             email: email,
             name: name
         }

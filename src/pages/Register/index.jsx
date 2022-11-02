@@ -32,7 +32,7 @@ export const Register = () => {
 
     const register = (e) => {
         e.preventDefault();
-        let form = {
+        const form = {
             email: email,
             password: password,
             name: name
