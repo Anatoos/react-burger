@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { Input , Button} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './register.module.css';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerNewUser } from "../../services/actions/auth";
 
@@ -17,12 +17,12 @@ export const Register = () => {
         setTimeout(() => passwordRef.current.focus(), 0)
         setPasswordStatus(!passwordStatus);
     };
-    const history = useHistory();
+    const navigate = useNavigate();
     const redirectToPath = useCallback(
         (path) => {
-            history.replace({pathname: path});
+            navigate({pathname: path});
         },
-        [history]
+        [navigate]
     );
 
     useEffect(() => {

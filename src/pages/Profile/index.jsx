@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect}  from "react";
 import styles from './profile.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, getUserInfo, logOut, refreshToken } from "../../services/actions/auth";
 import { getCookie } from "../../functions/cookie";
@@ -32,12 +32,12 @@ export const Profile = () => {
     const pwdRef = React.useRef(null);
     const nameRef = React.useRef(null);
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const redirectToPath = useCallback(
         (path) => {
-            history.replace({pathname: path});
+            navigate({pathname: path});
         },
-        [history]
+        [navigate]
     );
 
     useEffect(() => {
@@ -91,7 +91,7 @@ export const Profile = () => {
             <div className={styles.menu}>
                 {MENU_LINKS.map((elem,index) => (
                     <div className={styles.menuItem} key={index}>
-                        <NavLink to={elem.link} className={styles.menuItemLink} onClick={e => onClick(e) } activeClassName={styles.menuItemLinkActive} exact={true}>
+                        <NavLink to={elem.link} className={styles.menuItemLink} onClick={e => onClick(e) } activeclassname={styles.menuItemLinkActive}>
                             <p className="text text_type_main-medium">
                                 {elem.name}
                             </p>

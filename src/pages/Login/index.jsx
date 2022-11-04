@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './login.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Link, Redirect, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "../../services/actions/auth";
 
@@ -30,7 +30,7 @@ export const Login = () => {
 
     return(
             needToRedirect === true ? (
-            <Redirect to={refer}/>
+            <Navigate to={refer}/>
             ) : (
             <div className={styles.main_block}>
                 <h1>

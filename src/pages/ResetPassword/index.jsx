@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import styles from './reset-password.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { acceptResetPassword } from "../../functions/acceptResetPassword";
 
 export const ResetPassword = () => {
@@ -15,12 +15,12 @@ export const ResetPassword = () => {
         setTimeout(() => pwdRef.current.focus(), 0)
         setPasswordStatus(!passwordStatus);
     }
-    const history = useHistory();
+    const navigate = useNavigate();
     const redirectToPath = useCallback(
         (path) => {
-            history.replace({pathname: path});
+            navigate({pathname: path});
         },
-        [history]
+        [navigate]
     );
 
     const reset = useCallback((password, code) => {

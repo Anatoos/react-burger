@@ -3,12 +3,12 @@ import IngredientDetails from "../../components/IngredientDetails/IngredientDeta
 import { useDispatch, useSelector } from "react-redux";
 import { CLEAR_CURRENT_ITEM, GET_CURRENT_ITEM } from "../../services/actions/currentItem";
 import styles from './ingredient.module.css';
-import { useRouteMatch } from "react-router-dom";
+import {useParams} from "react-router";
 
 
 export const Ingredient = () => {
     const data = useSelector(state => state.ingredients.ingredientsData);
-    const id = useRouteMatch().params.id;
+    const { id } = useParams();
     const dispatch = useDispatch();
 
     const setCurrentItem = useCallback(() => {

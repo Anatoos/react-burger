@@ -3,6 +3,8 @@ import styles from "./IngredienDetails.module.css";
 import { useSelector } from "react-redux";
 
 const IngredientDetails = () => {
+
+
     const data = useSelector( state => state.currentItem.currentItem)
     return (
         <div className={styles.wrapper}>

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import styles from './forgot-password.module.css';
-import { Link, Redirect, useHistory, } from "react-router-dom";
+import { Link, Navigate, useLocation} from "react-router-dom";
 import { resetPassword } from "../../functions/resetPassword";
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 
@@ -8,7 +8,7 @@ export const ForgotPassword = () => {
     const [emailToReset, setEmailToReset] = React.useState("");
     const [loading, setLoading] = React.useState(false);
     const [needToRedirect, setNeedToRedirect] = React.useState(false)
-    const history = useHistory();
+    const location = useLocation();
 
     const next = useCallback((emailToReset) => {
         setLoading(true);
@@ -18,9 +18,9 @@ export const ForgotPassword = () => {
     },[]);
 
     return needToRedirect ? (
-        <Redirect to={{
+        <Navigate to={{
             pathname: '/reset-password',
-            state: { from: history.location.pathname }
+            state: { from: location.pathname }
         }}/>
     ):(
         <div className={styles.main_block}>

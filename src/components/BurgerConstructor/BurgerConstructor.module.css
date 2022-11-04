@@ -1,6 +1,10 @@
 .bc_wrapper {
     width: 600px;
 }
+.title {
+    margin-top: 0;
+    margin-bottom: 64px;
+}
 .selected_item {
     display: flex;
     align-items: center;
