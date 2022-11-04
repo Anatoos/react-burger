@@ -1,6 +1,9 @@
 .bc_wrapper {
-    margin-top:104px;
     width: 600px;
+}
+.title {
+    margin-top: 0;
+    margin-bottom: 64px;
 }
 .selected_item {
     display: flex;

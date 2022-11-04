@@ -18,6 +18,8 @@ import {
 import {CLEAR_COUNT, DECREASE_ITEM_COUNT, INCREASE_ITEM_COUNT} from "../../services/actions/ingredient";
 import SelectedItems from "./SelectedItems/SelectedItems";
 import { v4 as uuidv4 } from 'uuid';
+import {useLocation, Navigate} from "react-router-dom";
+import {getCookie} from "../../functions/cookie";
 
 const BurgerConstructor = () => {
     const bun = useSelector(state => state.constructorOrder.selectedBun);
@@ -26,6 +28,8 @@ const BurgerConstructor = () => {
     const loadingComplete = useSelector(state => state.orderId.orderIdSuccess);
     const hoverPosition = useSelector(state => state.constructorOrder.hoverBoundingRect)
     const dispatch = useDispatch();
+    const location = useLocation();
+    const [needToRedirect, setNeedToRedirect] = React.useState(false);
 
     const [{opacity}, dropTarget] = useDrop({
         accept: "item",
@@ -140,10 +144,18 @@ const BurgerConstructor = () => {
     }
 
     const openModal = () => {
-        getOrderId();
+        if (getCookie('token') === undefined) {
+            setNeedToRedirect(true);
+        }else {
+            getOrderId();
+        }
     }
-    return (
-
+    return needToRedirect ? (
+        <Navigate to={{
+            pathname: '/login',
+            state: { from: location.pathname }
+        }}/>
+    ) : (
         <div className={styles.bc_wrapper}>
             {orderId !== 0 && loadingComplete && (
                 <Modal close={closeModal}>
@@ -153,7 +165,7 @@ const BurgerConstructor = () => {
             <div ref={dropTarget} style={{opacity}}>
                 {bun.name === undefined && selectedItems.length < 1 && (
                     <div>
-                        <p className="text text_type_main-large">
+                        <p className={styles.title + ' text_type_main-large'}>
                             Перенесите сюда ингредиенты для бургера
                         </p>
                     </div>

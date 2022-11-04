@@ -1,0 +1,3 @@
+.main_block{
+    composes: main_block from '../Register/register.module.css';
+}

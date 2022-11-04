@@ -1,17 +1,14 @@
 import React, { useRef, useState } from "react";
 import styles from './BurgerIngredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
-import Modal from '../Modal/Modal'
-import IngredientDetails from '../IngredientDetails/IngredientDetails'
 import IngredientCard from './IngredientCard/IngredientCard'
 import { useDispatch, useSelector } from "react-redux";
-import { CLEAR_CURRENT_ITEM, GET_CURRENT_ITEM } from "../../services/actions/currentItem";
+import { GET_CURRENT_ITEM } from "../../services/actions/currentItem";
 import { SET_TAB } from "../../services/actions/tabs";
-
+import {useNavigate, useLocation} from "react-router-dom";
 
 
 const BurgerIngredients = () => {
-    const activeModal = useSelector(state => state.currentItem.activeModal)
     const data = useSelector( state => state.ingredients.ingredientsData)
     const dispatch = useDispatch();
     const ref = useRef(null);
@@ -19,7 +16,8 @@ const BurgerIngredients = () => {
     const refSauce = useRef(null);
     const refMain = useRef(null);
     const [height, setHeight] = useState(null);
-
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
     const tabPosition = {
@@ -54,16 +52,12 @@ const BurgerIngredients = () => {
         }
     }
     const setActiveIngredientId = (id) => {
+
         dispatch({
             type:GET_CURRENT_ITEM,
             data: findElement(id)
         })
-    }
-
-    const closeModal = () => {
-        dispatch({
-            type: CLEAR_CURRENT_ITEM
-        })
+        navigate(`/ingredients/${id}`, {state: { background: location }});
     }
 
     const findElement = (id) => {
@@ -94,11 +88,6 @@ const BurgerIngredients = () => {
     };
     return (
         <div>
-            {activeModal && (
-                <Modal title="Детали ингредиента" close={closeModal}>
-                    <IngredientDetails/>
-                </Modal>
-            )}
             <div className={styles.title}>
                 <p className="text text_type_main-large">
                     Соберите бургер
