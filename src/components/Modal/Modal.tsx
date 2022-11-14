@@ -1,18 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import * as ReactDOM from "react-dom";
 import modalStyle from "./Modal.module.css"
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
-import PropTypes from "prop-types";
 
-const modalRoot = document.getElementById("react-modals");
+const modalRoot: HTMLElement | null = document.getElementById("react-modals")!;
 
-const Modal = (props) =>{
+export type TProps = {
+    title?: string;
+    close: () => void;
+}
+const Modal: FC<TProps> = (props) =>{
+    const {title, close, children} = props;
     const esc = React.useCallback((event) => {
         if(event.key === "Escape") {
-            props.close();
+            close();
         }
-    }, [props.close]);
+    }, [close]);
 
     React.useEffect(() => {
         document.addEventListener("keydown", esc, false);
@@ -23,22 +27,18 @@ const Modal = (props) =>{
     }, [esc]);
     return ReactDOM.createPortal(
                 <div>
-                    <ModalOverlay close={props.close}/>
+                    <ModalOverlay close={close}/>
                     <div className={modalStyle.wrapper}>
                         <div className={modalStyle.modal}>
                             <p className="text text_type_main-medium">
-                                {props.title}
+                                {title}
                             </p>
-                            <CloseIcon type="primary" onClick={props.close}/>
+                            <CloseIcon type="primary" onClick={close}/>
                         </div>
-                        {props.children}
+                        {children}
                     </div>
                 </div>,
         modalRoot
     );
 }
-Modal.propTypes = {
-    title: PropTypes.string,
-    close: PropTypes.func.isRequired
-};
 export default Modal;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent, FormEvent} from "react";
 import styles from './login.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link, Navigate, useLocation } from "react-router-dom";
@@ -6,20 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "../../services/actions/auth";
 
 export const Login = () => {
-    const [email, setEmail] = React.useState('');
-    const [pwd, setPwd] = React.useState('');
-    const [pwdStatus,setPwdStatus] = React.useState(true);
-    const emailRef = React.useRef(null);
-    const pwdRef = React.useRef(null);
-    const needToRedirect = useSelector(store => store.profile.loginInfoSuccess)
+    const [email, setEmail] = React.useState<string>('');
+    const [pwd, setPwd] = React.useState<string>('');
+    const [pwdStatus,setPwdStatus] = React.useState<boolean>(true);
+    const emailRef = React.useRef<HTMLInputElement>(null);
+    const pwdRef = React.useRef<HTMLInputElement>(null);
+    const needToRedirect = useSelector((store: any) => store.profile.loginInfoSuccess)
     const onPasswordClick = () => {
-        setTimeout(() => pwdRef.current.focus(), 0)
         setPwdStatus(!pwdStatus);
     }
     const location = useLocation();
     const refer = location.state && location.state.from;
     const dispatch = useDispatch();
-    const enter = (e) => {
+    const enter = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = {
             email: email,
@@ -43,7 +42,7 @@ export const Login = () => {
                         <Input
                             type={'email'}
                             placeholder={'E-mail'}
-                            onChange={e => setEmail(e.target.value)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                             value={email}
                             name={'email'}
                             error={false}
@@ -56,7 +55,7 @@ export const Login = () => {
                         <Input
                             type={ pwdStatus ? 'password' : 'text' }
                             placeholder={'Пароль'}
-                            onChange={e => setPwd(e.target.value)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>)  => setPwd(e.target.value)}
                             icon={ pwdStatus ? 'ShowIcon' : 'HideIcon' }
                             value={pwd}
                             name={'name'}

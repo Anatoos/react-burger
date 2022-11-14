@@ -26,8 +26,9 @@ function App() {
     useEffect(()=>{
         dispatch(getIngredientData());
     },[dispatch])
-    const isLoading = useSelector(state => {
-        return state.ingredients.ingredientsSuccess});
+    const isLoading = useSelector((state: any) => {
+        return state.ingredients.ingredientsSuccess
+   });
 
 
 

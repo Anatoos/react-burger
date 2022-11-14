@@ -6,16 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { GET_CURRENT_ITEM } from "../../services/actions/currentItem";
 import { SET_TAB } from "../../services/actions/tabs";
 import {useNavigate, useLocation} from "react-router-dom";
+import {TIngredient, TSelectedIngredients} from "../../types/Ingredient";
 
 
 const BurgerIngredients = () => {
-    const data = useSelector( state => state.ingredients.ingredientsData)
+    const data = useSelector( (state: any) => state.ingredients.ingredientsData)
     const dispatch = useDispatch();
-    const ref = useRef(null);
-    const refBun = useRef(null);
-    const refSauce = useRef(null);
-    const refMain = useRef(null);
-    const [height, setHeight] = useState(null);
+    const ref = useRef<HTMLDivElement | any>(null);
+    const refBun = useRef<HTMLDivElement | any>(null);
+    const refSauce = useRef<HTMLDivElement | any>(null);
+    const refMain = useRef<HTMLDivElement | any>(null);
+    const [height, setHeight] = useState<number>(0);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -51,7 +52,7 @@ const BurgerIngredients = () => {
             }
         }
     }
-    const setActiveIngredientId = (id) => {
+    const setActiveIngredientId = (id: string) => {
 
         dispatch({
             type:GET_CURRENT_ITEM,
@@ -60,12 +61,12 @@ const BurgerIngredients = () => {
         navigate(`/ingredients/${id}`, {state: { background: location }});
     }
 
-    const findElement = (id) => {
-        return data.find( item => item._id === id)
+    const findElement = (id: string) => {
+        return data.find( (item: TSelectedIngredients) => item._id === id)
     }
 
     const Tabs = () => {
-        const current = useSelector(state => state.tab.activeTab)
+        const current = useSelector((state: any) => state.tab.activeTab)
         return (
             <div className={styles.tabs}>
                 <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
@@ -81,7 +82,7 @@ const BurgerIngredients = () => {
         )
     }
 
-    const setCurrent = (current) => {
+    const setCurrent = (current: string) => {
         if (current === 'bun') refBun.current.scrollIntoView(true);
         if (current === 'sauce') refSauce.current.scrollIntoView(true);
         if (current === 'main') refMain.current.scrollIntoView(true);
@@ -103,13 +104,13 @@ const BurgerIngredients = () => {
                     </p>
                 </div>
                 <div className={styles.ingredients_list}>
-                    {data.map((element) => (
+                    {data.map((element: TIngredient & { priceClass: string }) => (
                         element.type === 'bun' && (
                             <IngredientCard
                                 key={element._id}
                                 item={element}
                                 priceClass={styles.item__price}
-                                class={styles.item}
+                                classProps={styles.item}
                                 onClick={setActiveIngredientId}/>)
                     ))}
                 </div>
@@ -119,13 +120,13 @@ const BurgerIngredients = () => {
                     </p>
                 </div>
                 <div className={styles.ingredients_list}>
-                    {data.map((element, index) => (
+                    {data.map((element: TIngredient & { priceClass: string }) => (
                         element.type === 'sauce' && (
                             <IngredientCard
-                                key={index}
+                                key={element._id}
                                 item={element}
                                 priceClass={styles.item__price}
-                                class={styles.item}
+                                classProps={styles.item}
                                 onClick={setActiveIngredientId}/>)
                     ))}
                 </div>
@@ -135,13 +136,13 @@ const BurgerIngredients = () => {
                     </p>
                 </div>
                 <div className={styles.ingredients_list}>
-                    {data.map((element, index) => (
+                    {data.map((element: TIngredient & { priceClass: string }) => (
                         element.type === 'main' && (
                             <IngredientCard
-                                key={index}
+                                key={element._id}
                                 item={element}
                                 priceClass={styles.item__price}
-                                class={styles.item}
+                                classProps={styles.item}
                                 onClick={setActiveIngredientId}/>)
                     ))}
                 </div>
