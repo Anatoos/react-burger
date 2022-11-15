@@ -1,8 +1,11 @@
-import {useLocation, Navigate} from 'react-router-dom';
+import {useLocation, Navigate, RouteProps} from 'react-router-dom';
 import {getCookie} from "../functions/cookie";
 import {refreshToken} from "../services/actions/auth";
+import React from "react";
 
-export const ProtectedRoute: ({children}: { children: any }) => (JSX.Element) = ({ children }) => {
+type TProtect = RouteProps & { children?: React.ReactNode }
+
+export const ProtectedRoute = (children: TProtect) => {
     const location = useLocation();
     if (getCookie('token') === undefined) {
         if(localStorage.getItem('refreshToken') === null ) {
@@ -36,7 +39,7 @@ export const ProtectedRoute: ({children}: { children: any }) => (JSX.Element) = 
     return children;
 }
 
-export const ProtectedForAnyRoute: ({children}: { children: any }) => (JSX.Element) = ({ children }) => {
+export const ProtectedForAnyRoute = (children: TProtect)  => {
     const location = useLocation();
     const refer = location.state && location.state.from;
 
@@ -54,7 +57,7 @@ export const ProtectedForAnyRoute: ({children}: { children: any }) => (JSX.Eleme
 
     return children;
 }
-export const ProtectedForAuthRoute: ({children}: { children: any }) => (JSX.Element) = ({ children }) => {
+export const ProtectedForAuthRoute = (children: TProtect)  => {
     if (getCookie('token') !== undefined) {
         return (
             <Navigate to={{pathname:'/'}}/>
