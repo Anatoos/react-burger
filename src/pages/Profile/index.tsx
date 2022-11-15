@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect}  from "react";
+import React, {FormEvent, useCallback, useEffect} from "react";
 import styles from './profile.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -64,7 +64,7 @@ export const Profile = () => {
     }, [user])
 
 
-    const save = useCallback((e) => {
+    const save = useCallback((e: FormEvent) => {
         e.preventDefault();
         const form = {
             email: email,

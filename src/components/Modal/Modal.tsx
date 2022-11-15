@@ -12,7 +12,7 @@ export type TProps = {
 }
 const Modal: FC<TProps> = (props) =>{
     const {title, close, children} = props;
-    const esc = React.useCallback((event) => {
+    const esc = React.useCallback((event: KeyboardEvent ) => {
         if(event.key === "Escape") {
             close();
         }

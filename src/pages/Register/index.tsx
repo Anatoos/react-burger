@@ -1,4 +1,4 @@
-import React, {ChangeEvent, SyntheticEvent, useCallback, useEffect} from "react";
+import React, {ChangeEvent, FormEvent, useCallback, useEffect} from "react";
 import { Input , Button} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './register.module.css';
 import { Link, useNavigate } from "react-router-dom";
@@ -29,7 +29,7 @@ export const Register = () => {
     }, [needToRedirect])
 
 
-    const register = (e: SyntheticEvent) => {
+    const register = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = {
             email: email,
