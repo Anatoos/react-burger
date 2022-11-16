@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect}  from "react";
+import React, {FormEvent, useCallback, useEffect} from "react";
 import styles from './profile.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -22,16 +22,16 @@ export const Profile = () => {
             link: '/login'
         }
     ];
-    const user = useSelector(store => store.profile.user);
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [name, setName] = React.useState('');
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [isDefault, setIsDefault] = React.useState(true)
-    const emailRef = React.useRef(null);
-    const pwdRef = React.useRef(null);
-    const nameRef = React.useRef(null);
-    const dispatch = useDispatch();
+    const user = useSelector((store: any) => store.profile.user);
+    const [email, setEmail] = React.useState<string>('');
+    const [password, setPassword] = React.useState<string>('');
+    const [name, setName] = React.useState<string>('');
+    const [isLoading, setIsLoading] = React.useState<boolean>(true);
+    const [isDefault, setIsDefault] = React.useState<boolean>(true)
+    const emailRef = React.useRef<HTMLInputElement>(null);
+    const pwdRef = React.useRef<HTMLInputElement>(null);
+    const nameRef = React.useRef<HTMLInputElement>(null);
+    const dispatch: any = useDispatch();
     const navigate = useNavigate();
     const redirectToPath = useCallback(
         (path) => {
@@ -44,9 +44,11 @@ export const Profile = () => {
         if(!localStorage.getItem('refreshToken')){
             redirectToPath('/login');
         } else {
-            if (user !== {}) {
+            if (user) {
                 if (getCookie('token') === undefined) {
-                    refreshToken().then(()=> dispatch(getUserInfo()).then(setIsLoading(false))).catch(e => console.log(e));
+                    refreshToken()
+                        .then(()=> dispatch(getUserInfo())
+                            .then(() => setIsLoading(false))).catch(e => console.log(e));
                 } else {
                     dispatch(getUserInfo()).then(setIsLoading(false))
                 }
@@ -62,7 +64,7 @@ export const Profile = () => {
     }, [user])
 
 
-    const save = useCallback((e) => {
+    const save = useCallback((e: FormEvent) => {
         e.preventDefault();
         const form = {
             email: email,
@@ -78,8 +80,9 @@ export const Profile = () => {
         setIsDefault(true)
     },[])
 
-    const onClick = (e) => {
-        e.target.outerText === 'Выход' && dispatch(logOut())
+    const onClick = (e: React.MouseEvent) => {
+        const text: any = e;
+        text.target.outerText === 'Выход' && dispatch(logOut())
     }
 
     return isLoading ? (
@@ -91,7 +94,7 @@ export const Profile = () => {
             <div className={styles.menu}>
                 {MENU_LINKS.map((elem,index) => (
                     <div className={styles.menuItem} key={index}>
-                        <NavLink to={elem.link} className={styles.menuItemLink} onClick={e => onClick(e) } activeclassname={styles.menuItemLinkActive}>
+                        <NavLink to={elem.link} className={styles.menuItemLink} onClick={e => onClick(e) }>
                             <p className="text text_type_main-medium">
                                 {elem.name}
                             </p>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, {ChangeEvent, FormEvent, useCallback, useEffect} from "react";
 import { Input , Button} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './register.module.css';
 import { Link, useNavigate } from "react-router-dom";
@@ -6,15 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerNewUser } from "../../services/actions/auth";
 
 export const Register = () => {
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [passwordStatus, setPasswordStatus] = React.useState(true);
-    const passwordRef = React.useRef(null);
+    const [name, setName] = React.useState<string>('');
+    const [email, setEmail] = React.useState<string>('');
+    const [password, setPassword] = React.useState<string>('');
+    const [passwordStatus, setPasswordStatus] = React.useState<boolean>(true);
+    const passwordRef = React.useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
-    const needToRedirect = useSelector(store => store.profile.registerSuccess)
+    const needToRedirect = useSelector((store: any) => store.profile.registerSuccess)
     const onPasswordClick = () => {
-        setTimeout(() => passwordRef.current.focus(), 0)
         setPasswordStatus(!passwordStatus);
     };
     const navigate = useNavigate();
@@ -30,7 +29,7 @@ export const Register = () => {
     }, [needToRedirect])
 
 
-    const register = (e) => {
+    const register = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = {
             email: email,
@@ -52,7 +51,7 @@ export const Register = () => {
                     <Input
                         type={'text'}
                         placeholder={'Имя'}
-                        onChange={e => setName(e.target.value)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                         value={name}
                         name={'name'}
                         error={false}
@@ -64,7 +63,7 @@ export const Register = () => {
                     <Input
                         type={'email'}
                         placeholder={'E-mail'}
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                         value={email}
                         name={'email'}
                         error={false}
@@ -76,7 +75,7 @@ export const Register = () => {
                     <Input
                         type={ passwordStatus? 'password' : 'text'}
                         placeholder={'Пароль'}
-                        onChange={e => setPassword(e.target.value)}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                         value={password}
                         ref={passwordRef}
                         name={'password'}

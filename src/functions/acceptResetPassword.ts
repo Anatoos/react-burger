@@ -1,7 +1,7 @@
 import { API } from "../data/data";
 import { checkResponse } from "./checkResponse";
 
-export const  acceptResetPassword= async (pwd, token) => {
+export const  acceptResetPassword= async (pwd:string, token:string) => {
     return await fetch( API + 'password-reset/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

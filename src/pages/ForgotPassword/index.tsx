@@ -1,27 +1,37 @@
-import React, { useCallback } from "react";
+import React, {ChangeEvent, FormEvent, useCallback} from "react";
 import styles from './forgot-password.module.css';
 import { Link, Navigate, useLocation} from "react-router-dom";
 import { resetPassword } from "../../functions/resetPassword";
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
+import {TSubmitCallback} from "../../types/Callback";
+
+
 
 export const ForgotPassword = () => {
-    const [emailToReset, setEmailToReset] = React.useState("");
-    const [loading, setLoading] = React.useState(false);
-    const [needToRedirect, setNeedToRedirect] = React.useState(false)
+    const [emailToReset, setEmailToReset] = React.useState<string>("");
+    const [loading, setLoading] = React.useState<boolean>(false);
+    const [needToRedirect, setNeedToRedirect] = React.useState<boolean>(false)
     const location = useLocation();
 
-    const next = useCallback((emailToReset) => {
+    const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        next(emailToReset)
+    };
+
+    const next = useCallback<TSubmitCallback>((emailToReset) => {
         setLoading(true);
-        resetPassword({email:emailToReset})
+        resetPassword({email: emailToReset})
             .then(res => res ? setNeedToRedirect(true) : alert("Try Again!"))
             .then(() => setLoading(false));
     },[]);
 
     return needToRedirect ? (
         <Navigate to={{
-            pathname: '/reset-password',
-            state: { from: location.pathname }
-        }}/>
+                    pathname: '/reset-password'
+                    }}
+                state={{
+                    from: location.pathname
+                    }}/>
     ):(
         <div className={styles.main_block}>
                 <div className={styles.title + ' text text_type_main-medium'}>
@@ -29,12 +39,12 @@ export const ForgotPassword = () => {
                         Восстановление пароля
                     </p>
                 </div>
-                <form onSubmit={!loading ? (e)=>{ e.preventDefault(); next(emailToReset)} : ''}>
+                <form onSubmit={handleFormSubmit}>
                     <div className={styles.input}>
                         <Input
                             type={'email'}
                             placeholder={'E-mail'}
-                            onChange={e => setEmailToReset(e.target.value)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmailToReset(e.target.value)}
                             value={emailToReset}
                             name={'email'}
                             error={false}

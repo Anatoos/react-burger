@@ -1,8 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import styles from './AppHeader.module.css';
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import { useLocation, Link } from "react-router-dom";
 
+type TEntry = {
+    path: string;
+};
 
 const AppHeader = () =>{
     const { pathname } = useLocation();
@@ -35,7 +38,8 @@ const AppHeader = () =>{
         </section>
     );
 }
-const Entry = (path) => {
+
+const Entry: FC<TEntry> = (path) => {
     return (
         <Link className={path.path === '/profile' ? styles.entry + ' ' + styles.active : styles.entry} to='/profile'>
             <ProfileIcon type={path.path ==='/profile' ? "primary" : "secondary"}/>

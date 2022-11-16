@@ -1,16 +1,21 @@
-import { useLocation, Navigate } from 'react-router-dom';
+import {useLocation, Navigate} from 'react-router-dom';
 import {getCookie} from "../functions/cookie";
 import {refreshToken} from "../services/actions/auth";
+import React, {ReactElement} from "react";
 
-export function ProtectedRoute({ children }) {
+type TProtect = {  children: ReactElement | JSX.Element;}
+
+export const ProtectedRoute = ({children}: TProtect) => {
     const location = useLocation();
     if (getCookie('token') === undefined) {
         if(localStorage.getItem('refreshToken') === null ) {
             return (
                 <Navigate
                     to={{
-                        pathname: '/login',
-                        state: { from: location.pathname }
+                        pathname: '/login'
+                    }}
+                    state={{
+                        from: location.pathname
                     }}
                 />
             );
@@ -19,8 +24,10 @@ export function ProtectedRoute({ children }) {
                 return (
                     <Navigate
                         to={{
-                            pathname: '/login',
-                            state: { from: location.pathname }
+                            pathname: '/login'
+                        }}
+                        state={{
+                            from: location.pathname
                         }}
                     />
                 );
@@ -32,8 +39,7 @@ export function ProtectedRoute({ children }) {
     return children;
 }
 
-
-export function ProtectedForAnyRoute({ children }) {
+export const ProtectedForAnyRoute = ({children}: TProtect)  => {
     const location = useLocation();
     const refer = location.state && location.state.from;
 
@@ -51,8 +57,7 @@ export function ProtectedForAnyRoute({ children }) {
 
     return children;
 }
-
-export function ProtectedForAuthRoute({ children}) {
+export const ProtectedForAuthRoute = ({children}: TProtect)  => {
     if (getCookie('token') !== undefined) {
         return (
             <Navigate to={{pathname:'/'}}/>

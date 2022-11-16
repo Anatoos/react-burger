@@ -1,8 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import styles from "./OrderDetails.module.css";
-import {CheckMarkIcon} from "@ya.praktikum/react-developer-burger-ui-components";
+import { CheckMarkIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
-const OrderDetails = (props) => {
+type TProps = {
+    number: number;
+}
+const OrderDetails: FC<TProps> = (props) => {
     const status = 'Ваш заказ начали готовить';
     const info = 'Дождитесь готовности на орбитальной станции'
     return (

@@ -1,6 +1,6 @@
 import { refreshToken } from "../services/actions/auth";
 
-export const  checkResponse = (res) => {
+export const  checkResponse = (res: Response) => {
     if (!res.ok) {
         if(res.status === 403) {
             refreshToken().catch(()=> alert("Token is not refreshed"));

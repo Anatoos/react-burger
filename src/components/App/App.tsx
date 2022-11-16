@@ -13,7 +13,7 @@ function App() {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-    const background = location.state && location.state.background;
+    const background = (location.state as any)?.background;
 
     const onCloseModal = () => {
         navigate(-1);
@@ -26,8 +26,9 @@ function App() {
     useEffect(()=>{
         dispatch(getIngredientData());
     },[dispatch])
-    const isLoading = useSelector(state => {
-        return state.ingredients.ingredientsSuccess});
+    const isLoading = useSelector((state: any) => {
+        return state.ingredients.ingredientsSuccess
+   });
 
 
 

@@ -1,4 +1,6 @@
-function ingredientsMap(array) {
+import {TIngredient} from "../types/Ingredient";
+
+function ingredientsMap(array: TIngredient) {
     return Array.isArray(array) && array.map((item) => {
         return {
             _id: item._id ? item._id : '',

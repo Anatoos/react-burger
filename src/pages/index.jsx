@@ -1,10 +1,10 @@
-import { ForgotPassword } from './ForgotPassword/index';
-import { Home } from './Home/index';
-import { Ingredient } from './Ingredient/index';
-import { Login } from './Login/index';
-import { NotFound404 } from './NotFound404/index';
-import { Profile } from './Profile/index';
-import { Register } from './Register/index';
-import { ResetPassword } from './ResetPassword/index';
+import { ForgotPassword } from './ForgotPassword';
+import { Home } from './Home';
+import { Ingredient } from './Ingredient';
+import { Login } from './Login';
+import { NotFound404 } from './NotFound404';
+import { Profile } from './Profile';
+import { Register } from './Register';
+import { ResetPassword } from './ResetPassword';
 
 export { ForgotPassword, Home, Ingredient, Login, NotFound404, Profile, Register, ResetPassword };
