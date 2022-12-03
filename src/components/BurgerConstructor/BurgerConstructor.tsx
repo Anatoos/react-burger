@@ -3,10 +3,10 @@ import styles from './BurgerConstructor.module.css';
 import { ConstructorElement, CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components'
 import Modal from '../Modal/Modal'
 import OrderDetails from "../OrderDetails/OrderDetails";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../../types/hooks";
 import { getOrderIdReq } from "../../services/actions/getOrderIdReq";
 import { CLEAR_ORDER_ID } from "../../services/actions/orderId";
-import {useDrop, XYCoord} from "react-dnd";
+import { useDrop, XYCoord } from "react-dnd";
 import {
     CHANGE_POSITION, CLEAR_BASKET,
     DROP_HOVER_POSITION,
@@ -22,7 +22,7 @@ import {useLocation, Navigate} from "react-router-dom";
 import {getCookie} from "../../functions/cookie";
 import {TSelectedIngredients} from "../../types/Ingredient";
 
-type TResult = {
+export type TResult = {
     ingredients: string[]
 }
 type TItem = {

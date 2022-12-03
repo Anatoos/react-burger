@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./IngredienDetails.module.css";
-import { useSelector } from "react-redux";
+import { useSelector } from "../../types/hooks";
 
 const IngredientDetails = () => {
 

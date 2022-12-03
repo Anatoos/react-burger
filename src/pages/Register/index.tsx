@@ -2,7 +2,7 @@ import React, {ChangeEvent, FormEvent, useCallback, useEffect} from "react";
 import { Input , Button} from "@ya.praktikum/react-developer-burger-ui-components";
 import styles from './register.module.css';
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../../types/hooks";
 import { registerNewUser } from "../../services/actions/auth";
 
 export const Register = () => {

@@ -2,7 +2,7 @@ import React, {ChangeEvent, FormEvent} from "react";
 import styles from './login.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../../types/hooks";
 import { logIn } from "../../services/actions/auth";
 
 export const Login = () => {

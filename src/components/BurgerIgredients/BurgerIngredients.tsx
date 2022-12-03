@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styles from './BurgerIngredients.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import IngredientCard from './IngredientCard/IngredientCard'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../../types/hooks";
 import { GET_CURRENT_ITEM } from "../../services/actions/currentItem";
 import { SET_TAB } from "../../services/actions/tabs";
 import {useNavigate, useLocation} from "react-router-dom";

@@ -6,31 +6,24 @@ import {
     DECREASE_ITEM_COUNT,
     CLEAR_COUNT,
 } from '../actions/ingredient';
+import { TIngredientActions } from "../actions/ingredient";
+import { TIngredient } from "../../types/Ingredient";
 
-const ingredientsInitialState = {
-    ingredientsData: [
-        {
-            _id: '',
-            name: '',
-            type: '',
-            proteins: '',
-            fat: '',
-            carbohydrates: '',
-            calories: '',
-            price: '',
-            image: '',
-            image_mobile: '',
-            image_large: '',
-            __v: '',
-            count: 0
-        }
-    ],
+type TIngredientsInitialState = {
+    ingredientsData: Array<TIngredient>,
+    ingredientsSuccess: boolean,
+    ingredientsFailed: boolean,
+    ingredientsRequest: boolean
+}
+
+const ingredientsInitialState: TIngredientsInitialState = {
+    ingredientsData: [{} as TIngredient],
     ingredientsSuccess: false,
     ingredientsFailed: false,
     ingredientsRequest: false
 };
 
-export const ingredientsReducer = (state = ingredientsInitialState, action) => {
+export const ingredientsReducer = (state: TIngredientsInitialState = ingredientsInitialState, action: TIngredientActions) => {
     switch (action.type) {
         case GET_INGREDIENT_REQUEST: {
             return {
@@ -58,7 +51,7 @@ export const ingredientsReducer = (state = ingredientsInitialState, action) => {
             };
         }
         case INCREASE_ITEM_COUNT: {
-            const arr = [...state.ingredientsData];
+            const arr: Array<TIngredient> = state.ingredientsData;
             const index = arr.findIndex(item => item._id === action.id);
             if(index !== -1) {
                 arr[index].count += 1;

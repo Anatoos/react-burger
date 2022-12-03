@@ -17,9 +17,11 @@ import {
     GET_REGISTRATION_INFO_FAILED,
     GET_REGISTRATION_INFO_SUCCESS
 } from "./profile";
-import {setCookie, getCookie, deleteCookie} from "../../functions/cookie";
+import { setCookie, getCookie, deleteCookie } from "../../functions/cookie";
+import { TUser } from "../../types/User";
+import { AppThunk, AppDispatch } from "../../types/Core";
 
-const makeRequest = async (data, path) => {
+const makeRequest = async (data: TUser, path: string) => {
     return await fetch(API + path, {
         method: 'POST',
         mode: 'cors',
@@ -34,7 +36,7 @@ const makeRequest = async (data, path) => {
     })
 }
 
-const makeAuthRequest = async (data = {}, path, type = 'POST') => {
+const makeAuthRequest = async (data: TUser = {} as TUser, path: string, type: string = 'POST') => {
     return await fetch(API + path, {
         method: type,
         mode: 'cors',
@@ -50,7 +52,7 @@ const makeAuthRequest = async (data = {}, path, type = 'POST') => {
     })
 }
 
-const makeGETAuthRequest = async (path) => {
+const makeGETAuthRequest = async (path: string) => {
     return await fetch(API + path, {
         method: 'GET',
         mode: 'cors',
@@ -65,8 +67,8 @@ const makeGETAuthRequest = async (path) => {
     })
 }
 
-const makeAuthToken = (data) => {
-    let authToken = data.accessToken;
+const makeAuthToken = (data: any) => {
+    let authToken = data;
     let result ={};
 
     if (authToken.indexOf('Bearer') === 0) {
@@ -79,19 +81,19 @@ const makeAuthToken = (data) => {
     return result;
 }
 
-export const logIn = (data) => {
-    return async function (dispatch) {
+export const logIn: AppThunk = (data: TUser & { email: string, password: string }) => {
+    return async function (dispatch: AppDispatch) {
         dispatch({
             type: GET_LOGIN_INFO_REQUEST
         })
         await makeRequest(data, 'auth/login')
             .then(checkResponse)
-            .then(res => {
-                makeAuthToken(res);
-                localStorage.setItem('refreshToken',res.refreshToken);
+            .then(response => {
+                makeAuthToken(response.accessToken);
+                localStorage.setItem('refreshToken',response.refreshToken);
                 dispatch({
                     type: GET_LOGIN_INFO_SUCCESS,
-                    data: res
+                    data: response
                 })
             })
             .catch( e => {
@@ -103,19 +105,19 @@ export const logIn = (data) => {
     }
 };
 
-export const registerNewUser = (data) => {
-    return async function (dispatch) {
+export const registerNewUser: AppThunk = (data: TUser) => {
+    return async function (dispatch: AppDispatch) {
         dispatch({
             type: GET_REGISTRATION_INFO_REQUEST
         })
         await makeRequest(data, 'auth/register')
             .then(checkResponse)
-            .then(res => {
-                makeAuthToken(res);
-                localStorage.setItem('refreshToken',res.refreshToken);
+            .then(response => {
+                makeAuthToken(response);
+                localStorage.setItem('refreshToken',response.refreshToken);
                 dispatch({
                     type: GET_REGISTRATION_INFO_SUCCESS,
-                    data: res.user
+                    data: response.user
                 });
             })
             .catch( e => {
@@ -127,8 +129,8 @@ export const registerNewUser = (data) => {
     }
 }
 
-export const logOut = () => {
-    return async function (dispatch) {
+export const logOut: AppThunk = () => {
+    return async function (dispatch: AppDispatch) {
         dispatch({
             type: GET_LOGOUT_INFO_REQUEST
         })
@@ -153,26 +155,26 @@ export const logOut = () => {
 export const refreshToken = async () => {
     await makeRequest({ token: localStorage.getItem('refreshToken') }, 'auth/token')
         .then(checkResponse)
-        .then(res => {
-            makeAuthToken(res);
-            localStorage.setItem('refreshToken',res.refreshToken)
+        .then(response => {
+            makeAuthToken(response.accessToken);
+            localStorage.setItem('refreshToken',response.refreshToken)
         })
         .catch(e => {
             e ? console.log(e) : console.log("Произошла ошибка")
         })
 }
 
-export const getUserInfo = () => {
-    return async function (dispatch) {
+export const getUserInfo: AppThunk = () => {
+    return async function (dispatch: AppDispatch) {
         dispatch({
             type: GET_USER_INFO_REQUEST
         })
         await makeGETAuthRequest( 'auth/user')
             .then(checkResponse)
-            .then(res => {
+            .then(response => {
                 dispatch({
                     type: GET_USER_INFO_SUCCESS,
-                    data: res
+                    data: response.user
                 })
             })
             .catch( e => {
@@ -184,17 +186,17 @@ export const getUserInfo = () => {
     }
 }
 
-export const changeUserInfo = (data) => {
-    return async function (dispatch) {
+export const changeUserInfo: AppThunk = (data: TUser) => {
+    return async function (dispatch: AppDispatch) {
         dispatch({
             type: CHANGE_USER_INFO_REQUEST
         })
         await makeAuthRequest(data, 'auth/user', 'PATCH')
             .then(checkResponse)
-            .then(res => {
+            .then(response => {
                 dispatch({
                     type: CHANGE_USER_INFO_SUCCESS,
-                    data: res
+                    data: response.user
                 })
             })
             .catch( e => {

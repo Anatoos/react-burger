@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect }  from "react";
 import IngredientDetails from "../../components/IngredientDetails/IngredientDetails";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "../../types/hooks";
 import { CLEAR_CURRENT_ITEM, GET_CURRENT_ITEM } from "../../services/actions/currentItem";
 import styles from './ingredient.module.css';
-import {useParams} from "react-router";
-import {TCallbackVoid} from "../../types/Callback";
-import {TIngredient} from "../../types/Ingredient";
+import { useParams } from "react-router";
+import { TCallbackVoid } from "../../types/Callback";
+import { TIngredient } from "../../types/Ingredient";
 
 
 export const Ingredient = () => {

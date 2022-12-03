@@ -1,7 +1,7 @@
 .wrapper {
     position: fixed;
-    z-index: 2;
-    width: 600px;
+    z-index: 100;
+    width: 800px;
     max-height: 600px;
     background-color: rgb(28, 28, 33);
     border-radius: 50px;
