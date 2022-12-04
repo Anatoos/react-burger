@@ -79,7 +79,7 @@ function App() {
                           {background && (
                               <Routes>
                                   <Route path='/ingredients/:id' element={
-                                      <Modal close={onCloseModal}>
+                                      <Modal title="Детали ингредиента" close={onCloseModal}>
                                           <Ingredient/>
                                       </Modal>
                                   } />
