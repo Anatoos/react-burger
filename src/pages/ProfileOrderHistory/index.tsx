@@ -7,8 +7,11 @@ import { GET_CURRENT_ORDER_ID, CLEAR_CURRENT_ORDER_ID } from "../../services/act
 import Modal from "../../components/Modal/Modal";
 import { FeedId } from "../../components/FeedId";
 import { WS_CONNECTION_CLOSED_USER, WS_CONNECTION_START_USER} from "../../services/actions/wsConnectUser";
+import {useLocation, useNavigate} from "react-router-dom";
 
 export const  ProfileOrderHistory:FC = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch({ type: WS_CONNECTION_START_USER });
@@ -18,7 +21,6 @@ export const  ProfileOrderHistory:FC = () => {
     }, [dispatch]);
 
     const orders = useSelector((store)=> store.wsConnectUser.data.orders);
-    console.log (orders);
     const activeModal = useSelector((store) => store.currentItem.currentOrderId)
     const closeModal = useCallback(()=> {
         window.history.pushState(null,'','/');
@@ -32,7 +34,7 @@ export const  ProfileOrderHistory:FC = () => {
             type: GET_CURRENT_ORDER_ID,
             data: number
         })
-        window.history.pushState(null,'','/profile/order/' + number);
+        navigate(`/profile/order/${number}`, {state: { background: location }})
     },[])
 
 

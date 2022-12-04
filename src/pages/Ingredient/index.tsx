@@ -9,7 +9,7 @@ import { TIngredient } from "../../types/Ingredient";
 
 
 export const Ingredient = () => {
-    const data = useSelector((state: any) => state.ingredients.ingredientsData);
+    const data = useSelector((state) => state.ingredients.ingredientsData);
     const { id }  = useParams<{ id?: string; }>();
     const dispatch = useDispatch();
 

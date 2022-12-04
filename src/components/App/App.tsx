@@ -28,7 +28,7 @@ function App() {
     useEffect(()=>{
         dispatch(getIngredientData());
     },[dispatch])
-    const isLoading = useSelector((state: any) => {
+    const isLoading = useSelector((state) => {
         return state.ingredients.ingredientsSuccess
    });
 
@@ -54,7 +54,7 @@ function App() {
                                   <ProtectedRoute>
                                       <Profile />
                                   </ProtectedRoute>} />
-                              <Route path='/profile/orders/:id' element={
+                              <Route path='/profile/order/:id' element={
                                   <ProtectedRoute>
                                       <FeedId />
                                   </ProtectedRoute>
@@ -82,6 +82,11 @@ function App() {
                                       <Modal title="Детали ингредиента" close={onCloseModal}>
                                           <Ingredient/>
                                       </Modal>
+                                  } />
+                                  <Route path='/profile/order/:id' element={
+                                          <Modal title="Детали заказа" close={onCloseModal}>
+                                              <FeedId />
+                                          </Modal>
                                   } />
                               </Routes>
                           )}

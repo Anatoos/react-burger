@@ -1,7 +1,7 @@
 .main_block{
     composes: main_block from '../Register/register.module.css';
     flex-direction: row!important;
-    width: 55%!important;
+    width: 1250px!important;
     justify-content: center!important;
 }
 

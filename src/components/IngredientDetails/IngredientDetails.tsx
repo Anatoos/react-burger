@@ -5,7 +5,7 @@ import { useSelector } from "../../types/hooks";
 const IngredientDetails = () => {
 
 
-    const data = useSelector( (state: any)=> state.currentItem.currentItem)
+    const data = useSelector( (state)=> state.currentItem.currentItem)
     return (
         <div className={styles.wrapper}>
             <div>

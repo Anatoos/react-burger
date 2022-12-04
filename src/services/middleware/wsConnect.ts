@@ -17,21 +17,21 @@ export const socketMiddleware = (wsUrl : string, wsActions : TWsActions, user : 
                 socket = token ? new WebSocket(wsUrl + '?token=' + token) : new WebSocket(wsUrl);
             }
             if (socket) {
-                socket.onopen = ( event : AnyAction ) => {
+                socket.onopen = ( event : Event ) => {
                     dispatch({
                         type: onOpen,
                         payload: event
                     });
                 };
 
-                socket.onerror = ( event : AnyAction ) => {
+                socket.onerror = ( event : Event ) => {
                     dispatch({
                         type: onError,
                         payload: event
                     });
                 };
 
-                socket.onmessage = ( event : AnyAction ) => {
+                socket.onmessage = ( event : MessageEvent ) => {
                     const { data } = event;
                     const parsedData = JSON.parse(data);
                     const {
@@ -45,7 +45,7 @@ export const socketMiddleware = (wsUrl : string, wsActions : TWsActions, user : 
                     });
                 };
 
-                socket.onclose = ( event : AnyAction ) => {
+                socket.onclose = ( event : CloseEvent ) => {
                     dispatch({
                         type: onClose,
                         payload: event

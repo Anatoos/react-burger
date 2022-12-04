@@ -5,12 +5,14 @@ import IngredientCard from './IngredientCard/IngredientCard'
 import { useDispatch, useSelector } from "../../types/hooks";
 import { GET_CURRENT_ITEM } from "../../services/actions/currentItem";
 import { SET_TAB } from "../../services/actions/tabs";
-import {useNavigate, useLocation} from "react-router-dom";
-import {TIngredient, TSelectedIngredients} from "../../types/Ingredient";
+import { useNavigate, useLocation } from "react-router-dom";
+import { TIngredient } from "../../types/Ingredient";
+
+
 
 
 const BurgerIngredients = () => {
-    const data = useSelector( (state: any) => state.ingredients.ingredientsData)
+    const data = useSelector( (state) => state.ingredients.ingredientsData)
     const dispatch = useDispatch();
     const ref = useRef<HTMLDivElement | any>(null);
     const refBun = useRef<HTMLDivElement | any>(null);
@@ -62,11 +64,11 @@ const BurgerIngredients = () => {
     }
 
     const findElement = (id: string) => {
-        return data.find( (item: TSelectedIngredients) => item._id === id)
+        return data.find( (item: TIngredient) => item._id === id)
     }
 
     const Tabs = () => {
-        const current = useSelector((state: any) => state.tab.activeTab)
+        const current = useSelector((state) => state.tab.activeTab)
         return (
             <div className={styles.tabs}>
                 <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
@@ -104,7 +106,7 @@ const BurgerIngredients = () => {
                     </p>
                 </div>
                 <div className={styles.ingredients_list}>
-                    {data.map((element: TIngredient & { priceClass: string }) => (
+                    {data.map((element: TIngredient) => (
                         element.type === 'bun' && (
                             <IngredientCard
                                 key={element._id}
@@ -120,7 +122,7 @@ const BurgerIngredients = () => {
                     </p>
                 </div>
                 <div className={styles.ingredients_list}>
-                    {data.map((element: TIngredient & { priceClass: string }) => (
+                    {data.map((element: TIngredient) => (
                         element.type === 'sauce' && (
                             <IngredientCard
                                 key={element._id}
@@ -136,7 +138,7 @@ const BurgerIngredients = () => {
                     </p>
                 </div>
                 <div className={styles.ingredients_list}>
-                    {data.map((element: TIngredient & { priceClass: string }) => (
+                    {data.map((element: TIngredient) => (
                         element.type === 'main' && (
                             <IngredientCard
                                 key={element._id}
