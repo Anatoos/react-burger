@@ -11,7 +11,7 @@ export const Login = () => {
     const [pwdStatus,setPwdStatus] = React.useState<boolean>(true);
     const emailRef = React.useRef<HTMLInputElement>(null);
     const pwdRef = React.useRef<HTMLInputElement>(null);
-    const needToRedirect = useSelector((store: any) => store.profile.loginInfoSuccess)
+    const needToRedirect = useSelector((store) => store.profile.loginInfoSuccess)
     const onPasswordClick = () => {
         setPwdStatus(!pwdStatus);
     }

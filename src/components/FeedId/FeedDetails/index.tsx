@@ -13,7 +13,7 @@ interface IOrderItem {
 }
 
 const FeedDetails: FC = () => {
-    const idFromStore = useSelector((store:any) => store.currentItem.currentOrderId);
+    const idFromStore = useSelector((store) => store.currentItem.currentOrderId);
     const { id } = useParams<{id:string}>();
     const path = useLocation().pathname;
     const finallyId = idFromStore === '' ? id : idFromStore;

@@ -12,7 +12,7 @@ export const Register = () => {
     const [passwordStatus, setPasswordStatus] = React.useState<boolean>(true);
     const passwordRef = React.useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
-    const needToRedirect = useSelector((store: any) => store.profile.registerSuccess)
+    const needToRedirect = useSelector((store) => store.profile.registerSuccess)
     const onPasswordClick = () => {
         setPasswordStatus(!passwordStatus);
     };

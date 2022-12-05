@@ -23,7 +23,7 @@ export const Profile = () => {
             link: '/login'
         }
     ];
-    const user = useSelector((store: any) => store.profile.user);
+    const user = useSelector((store) => store.profile.user);
     const [email, setEmail] = React.useState<string>('');
     const [password, setPassword] = React.useState<string>('');
     const [name, setName] = React.useState<string>('');
