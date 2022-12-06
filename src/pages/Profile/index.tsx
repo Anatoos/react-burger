@@ -1,10 +1,11 @@
 import React, {FormEvent, useCallback, useEffect} from "react";
 import styles from './profile.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "../../types/hooks";
 import { changeUserInfo, getUserInfo, logOut, refreshToken } from "../../services/actions/auth";
 import { getCookie } from "../../functions/cookie";
+import { ProfileOrderHistory } from "../ProfileOrderHistory";
 
 
 export const Profile = () => {
@@ -22,23 +23,23 @@ export const Profile = () => {
             link: '/login'
         }
     ];
-    const user = useSelector((store: any) => store.profile.user);
+    const user = useSelector((store) => store.profile.user);
     const [email, setEmail] = React.useState<string>('');
     const [password, setPassword] = React.useState<string>('');
     const [name, setName] = React.useState<string>('');
     const [isLoading, setIsLoading] = React.useState<boolean>(true);
-    const [isDefault, setIsDefault] = React.useState<boolean>(true)
-    const emailRef = React.useRef<HTMLInputElement>(null);
-    const pwdRef = React.useRef<HTMLInputElement>(null);
-    const nameRef = React.useRef<HTMLInputElement>(null);
+    const [isDefault, setIsDefault] = React.useState<boolean>(true);
     const dispatch: any = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+
     const redirectToPath = useCallback(
         (path) => {
             navigate({pathname: path});
         },
         [navigate]
     );
+    const isOrderHistory = location.pathname === '/profile/orders';
 
     useEffect(() => {
         if(!localStorage.getItem('refreshToken')){
@@ -58,8 +59,8 @@ export const Profile = () => {
 
     useEffect(()=>{
         if(user!==undefined) {
-            setEmail(user.email)
-            setName(user.name)
+            setEmail(user.email || '')
+            setName(user.name || '')
         }
     }, [user])
 
@@ -74,8 +75,8 @@ export const Profile = () => {
     },[])
 
     const cancel = useCallback( () => {
-        setEmail(user.email);
-        setName(user.name);
+        setEmail(user.email || '');
+        setName(user.name || '');
         dispatch(getUserInfo()).then(setIsLoading(false))
         setIsDefault(true)
     },[])
@@ -107,6 +108,9 @@ export const Profile = () => {
                     </p>
                 </div>
             </div>
+            {isOrderHistory ? (
+                <ProfileOrderHistory/>
+            ) : (
             <div className={styles.data}>
                 <form onSubmit={save}>
                     <div className={styles.dataItem}>
@@ -121,7 +125,6 @@ export const Profile = () => {
                             value={name || ''}
                             name={'name'}
                             error={false}
-                            ref={nameRef}
                             errorText={'Ошибка'}
                             size={'default'}
                         />
@@ -138,7 +141,6 @@ export const Profile = () => {
                             value={email || ''}
                             name={'name'}
                             error={false}
-                            ref={emailRef}
                             errorText={'Ошибка'}
                             size={'default'}
                         />
@@ -155,7 +157,6 @@ export const Profile = () => {
                             value={password || ''}
                             name={'name'}
                             error={false}
-                            ref={pwdRef}
                             errorText={'Ошибка'}
                             size={'default'}
                         />
@@ -174,6 +175,7 @@ export const Profile = () => {
                     )}
                 </form>
             </div>
+                )}
         </div>
     )
 }

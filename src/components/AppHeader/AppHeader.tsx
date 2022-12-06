@@ -10,7 +10,7 @@ type TEntry = {
 const AppHeader = () =>{
     const { pathname } = useLocation();
     const isMain = pathname === '/';
-    const isOrders = pathname === '/orders';
+    const isOrders = pathname === '/feed';
     return (
         <section className={styles.header}>
             <section className={styles.wrapper}>
@@ -23,7 +23,7 @@ const AppHeader = () =>{
                             </p>
                         </section>
                     </Link>
-                    <Link to={'/orders'}>
+                    <Link to={'/feed'}>
                         <section className={styles.menuItem}>
                             <ListIcon type={ isOrders ? "primary" : "secondary" }/>
                             <p className={ !isOrders ? "text text_type_main-default":"text text_type_main-default " + styles.active}>

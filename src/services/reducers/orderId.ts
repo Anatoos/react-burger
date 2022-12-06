@@ -4,7 +4,15 @@ import {
     GET_ORDER_ID_FAILED,
     CLEAR_ORDER_ID
 } from '../actions/orderId';
+import { TOrderIdActions } from "../actions/orderId";
 
+
+type TOrderIdInitialState = {
+    orderId: number,
+    orderIdSuccess: boolean,
+    orderIdFailed: boolean,
+    orderIdRequest: boolean
+}
 const orderIdInitialState = {
     orderId: 0,
     orderIdSuccess: false,
@@ -12,7 +20,7 @@ const orderIdInitialState = {
     orderIdRequest: false
 };
 
-export const orderIdReducer = (state = orderIdInitialState, action) => {
+export const orderIdReducer = (state: TOrderIdInitialState = orderIdInitialState, action: TOrderIdActions) => {
     switch (action.type) {
         case GET_ORDER_ID_REQUEST: {
             return {

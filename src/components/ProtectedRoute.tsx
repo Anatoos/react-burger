@@ -1,6 +1,6 @@
-import {useLocation, Navigate} from 'react-router-dom';
-import {getCookie} from "../functions/cookie";
-import {refreshToken} from "../services/actions/auth";
+import { useLocation, Navigate } from 'react-router-dom';
+import { getCookie } from "../functions/cookie";
+import { refreshToken } from "../services/actions/auth";
 import React, {ReactElement} from "react";
 
 type TProtect = {  children: ReactElement | JSX.Element;}

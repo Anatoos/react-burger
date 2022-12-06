@@ -15,9 +15,32 @@ import {
     CHANGE_USER_INFO_FAILED,
     CHANGE_USER_INFO_SUCCESS
 } from "../actions/profile";
+import { TProfileActions } from "../actions/profile";
+import { TUser } from "../../types/User";
+
+
+type TProfileInitialState = {
+    user: TUser,
+
+    loginInfo: boolean,
+    loginInfoSuccess: boolean,
+    loginInfoFailed:boolean,
+
+    getUserInfo: boolean,
+    getUserInfoSuccess: boolean,
+    getUserInfoFailed:boolean,
+
+    register: boolean,
+    registerSuccess: boolean,
+    registerFailed: boolean,
+
+    logoutInfo: boolean,
+    logoutInfoSuccess: boolean,
+    logoutInfoFailed: boolean,
+}
 
 const profileInitialState = {
-    user: {},
+    user: {} as TUser,
 
     loginInfo: false,
     loginInfoSuccess: false,
@@ -37,7 +60,7 @@ const profileInitialState = {
 };
 
 
-export const profileReducer = (state = profileInitialState, action) => {
+export const profileReducer = (state: TProfileInitialState = profileInitialState, action: TProfileActions) => {
     switch (action.type) {
         case GET_LOGIN_INFO_REQUEST: {
             return {
@@ -50,7 +73,7 @@ export const profileReducer = (state = profileInitialState, action) => {
         case GET_LOGIN_INFO_SUCCESS: {
             return {
                 ...state,
-                user: action.data.user,
+                user: action.data,
                 loginInfo: false,
                 loginInfoFailed: false,
                 loginInfoSuccess: true
@@ -96,7 +119,7 @@ export const profileReducer = (state = profileInitialState, action) => {
         case GET_REGISTRATION_INFO_SUCCESS: {
             return {
                 ...state,
-                user: action.data.user,
+                user: action.data,
                 register: false,
                 registerFailed: false,
                 registerSuccess: true
@@ -121,7 +144,7 @@ export const profileReducer = (state = profileInitialState, action) => {
         case GET_USER_INFO_SUCCESS: {
             return {
                 ...state,
-                user: action.data.user,
+                user: action.data,
                 getUserInfo: false,
                 getUserInfoFailed: false,
                 getUserInfoSuccess: true
@@ -146,7 +169,7 @@ export const profileReducer = (state = profileInitialState, action) => {
         case CHANGE_USER_INFO_SUCCESS: {
             return {
                 ...state,
-                user: action.data.user,
+                user: action.data,
                 loginInfo: false,
                 loginInfoFailed: false,
                 loginInfoSuccess: true

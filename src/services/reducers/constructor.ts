@@ -7,16 +7,22 @@ import {
     DROP_HOVER_POSITION,
     CLEAR_BASKET
 } from "../actions/constructor";
+import { TConstrutorActions } from "../actions/constructor";
+import { TIngredient, TSelectedIngredients } from "../../types/Ingredient";
 
-
+type TConstructorInitialState = {
+    selectedBun: TIngredient,
+    selectedItems: Array<TSelectedIngredients>,
+    hoverBoundingRect: number
+}
 const constructorInitialState = {
-    selectedBun: {},
+    selectedBun: {} as TIngredient,
     selectedItems: [],
     selectedItemsCount: [],
     hoverBoundingRect: 0
 };
 
-export const constructorOrderReducer = (state = constructorInitialState, action) => {
+export const constructorOrderReducer = (state: TConstructorInitialState = constructorInitialState, action: TConstrutorActions) => {
     switch (action.type) {
         case SET_ITEM: {
             return {
@@ -68,7 +74,7 @@ export const constructorOrderReducer = (state = constructorInitialState, action)
             return {
                 ...state,
                 selectedItems: [],
-                selectedBun: {}
+                selectedBun: {} as TIngredient
             }
         }
         default: {

@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import styles from './App.module.css';
 import AppHeader from '../AppHeader/AppHeader';
 import { getIngredientData } from "../../services/actions/getIngredient";
-import { useDispatch, useSelector } from "react-redux";
-import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
-import { ProtectedRoute, ProtectedForAnyRoute, ProtectedForAuthRoute} from "../ProtectedRoute";
+import { useDispatch, useSelector } from "../../types/hooks";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { ProtectedRoute, ProtectedForAnyRoute, ProtectedForAuthRoute } from "../ProtectedRoute";
 import { ForgotPassword, Home, Ingredient, Login, NotFound404, Profile, Register, ResetPassword } from '../../pages'
 import Modal from "../Modal/Modal";
-import {CLEAR_CURRENT_ITEM} from "../../services/actions/currentItem";
+import { CLEAR_CURRENT_ITEM } from "../../services/actions/currentItem";
+import { FeedId } from "../FeedId";
+import { Feed } from "../../pages/Feed";
 
 function App() {
     const dispatch = useDispatch();
@@ -26,7 +28,7 @@ function App() {
     useEffect(()=>{
         dispatch(getIngredientData());
     },[dispatch])
-    const isLoading = useSelector((state: any) => {
+    const isLoading = useSelector((state) => {
         return state.ingredients.ingredientsSuccess
    });
 
@@ -48,6 +50,15 @@ function App() {
                                     <ProtectedRoute>
                                         <Profile />
                                     </ProtectedRoute>} />
+                              <Route path='/profile/orders' element={
+                                  <ProtectedRoute>
+                                      <Profile />
+                                  </ProtectedRoute>} />
+                              <Route path='/profile/order/:id' element={
+                                  <ProtectedRoute>
+                                      <FeedId />
+                                  </ProtectedRoute>
+                              } />
                               <Route path='/register' element={
                                     <ProtectedForAuthRoute>
                                         <Register />
@@ -60,16 +71,22 @@ function App() {
                                     <ProtectedForAnyRoute >
                                         <ResetPassword />
                                     </ProtectedForAnyRoute> } />
-                              <Route path='/ingredients/:id' element={
-                                        <Ingredient />} />
+                              <Route path='/ingredients/:id' element={<Ingredient />} />
+                              <Route path='/feed' element={<Feed />} />
+                              <Route path='/feed/:id' element={<FeedId />} />
                               <Route path='*' element={<NotFound404 />} />
                           </Routes>
                           {background && (
                               <Routes>
                                   <Route path='/ingredients/:id' element={
-                                      <Modal close={onCloseModal}>
+                                      <Modal title="Детали ингредиента" close={onCloseModal}>
                                           <Ingredient/>
                                       </Modal>
+                                  } />
+                                  <Route path='/profile/order/:id' element={
+                                          <Modal title="Детали заказа" close={onCloseModal}>
+                                              <FeedId />
+                                          </Modal>
                                   } />
                               </Routes>
                           )}

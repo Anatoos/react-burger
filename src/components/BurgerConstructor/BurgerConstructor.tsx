@@ -3,10 +3,10 @@ import styles from './BurgerConstructor.module.css';
 import { ConstructorElement, CurrencyIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components'
 import Modal from '../Modal/Modal'
 import OrderDetails from "../OrderDetails/OrderDetails";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../../types/hooks";
 import { getOrderIdReq } from "../../services/actions/getOrderIdReq";
 import { CLEAR_ORDER_ID } from "../../services/actions/orderId";
-import {useDrop, XYCoord} from "react-dnd";
+import { useDrop, XYCoord } from "react-dnd";
 import {
     CHANGE_POSITION, CLEAR_BASKET,
     DROP_HOVER_POSITION,
@@ -22,7 +22,7 @@ import {useLocation, Navigate} from "react-router-dom";
 import {getCookie} from "../../functions/cookie";
 import {TSelectedIngredients} from "../../types/Ingredient";
 
-type TResult = {
+export type TResult = {
     ingredients: string[]
 }
 type TItem = {
@@ -37,11 +37,11 @@ type TItem = {
 }
 
     const BurgerConstructor = () => {
-    const bun = useSelector((state: any) => state.constructorOrder.selectedBun);
-    const selectedItems = useSelector((state: any) => state.constructorOrder.selectedItems);
-    const orderId = useSelector((state: any) => state.orderId.orderId);
-    const loadingComplete = useSelector((state: any) => state.orderId.orderIdSuccess);
-    const hoverPosition = useSelector((state: any) => state.constructorOrder.hoverBoundingRect)
+    const bun = useSelector((state) => state.constructorOrder.selectedBun);
+    const selectedItems = useSelector((state) => state.constructorOrder.selectedItems);
+    const orderId = useSelector((state) => state.orderId.orderId);
+    const loadingComplete = useSelector((state) => state.orderId.orderIdSuccess);
+    const hoverPosition = useSelector((state) => state.constructorOrder.hoverBoundingRect)
     const dispatch = useDispatch();
     const location = useLocation();
     const [needToRedirect, setNeedToRedirect] = React.useState<boolean>(false);

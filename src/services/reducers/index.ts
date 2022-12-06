@@ -5,6 +5,8 @@ import { currentItemReducer } from "./currentItem";
 import { constructorOrderReducer } from "./constructor";
 import { tabReducer } from "./tabs";
 import { profileReducer } from "./profile";
+import { wsReducer } from "./wsConnect";
+import { wsReducerUser } from "./wsConnectUser";
 
 export const rootReducer = combineReducers({
     ingredients: ingredientsReducer,
@@ -12,5 +14,7 @@ export const rootReducer = combineReducers({
     currentItem: currentItemReducer,
     constructorOrder: constructorOrderReducer,
     tab: tabReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    wsConnect: wsReducer,
+    wsConnectUser: wsReducerUser
 });

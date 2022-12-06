@@ -1,4 +1,4 @@
-export type TIngredient = {
+export interface TIngredient {
         readonly _id: string;
         readonly name: string;
         readonly type: string;
@@ -11,7 +11,8 @@ export type TIngredient = {
         readonly image_mobile: string;
         readonly image_large: string;
         readonly __v?: string;
-        count?: number
+        count: number;
+        priceClass?: string
 }
 
 export type TSelectedIngredients = {

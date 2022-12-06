@@ -4,17 +4,21 @@ import {
     GET_ORDER_ID_SUCCESS
 } from './orderId';
 import { checkResponse } from "../../functions/checkResponse";
-import { API } from '../../data/data'
+import { API } from '../../data/data';
+import { AppThunk, AppDispatch } from "../../types/Core";
+import { TResult} from "../../components/BurgerConstructor/BurgerConstructor";
+import { getCookie } from "../../functions/cookie";
 
-export function getOrderIdReq(post) {
-    return function (dispatch) {
+export const getOrderIdReq: AppThunk = (post: TResult) => {
+    return function (dispatch: AppDispatch) {
         dispatch({
             type: GET_ORDER_ID_REQUEST
         })
         fetch(API + 'orders', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json;charset=utf-8'
+                'Content-Type': 'application/json;charset=utf-8',
+                Authorization: 'Bearer ' + getCookie('token')
             },
             body: JSON.stringify(post)
         }).then(checkResponse)
