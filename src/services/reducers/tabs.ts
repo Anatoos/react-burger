@@ -4,7 +4,7 @@ import { TSetTabAction } from "../actions/tabs";
 type TInitialState = {
     activeTab: string
 }
-const tabInitialState = {
+export const tabInitialState = {
     activeTab: 'bun'
 }
 

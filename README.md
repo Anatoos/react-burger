@@ -1,5 +1,4 @@
 # You can see site at link below
-
 [https://anatoos.github.io/react-burger/]([https://anatoos.github.io/react-burger/])  
 
 ## Languages in project
@@ -17,8 +16,7 @@
 
     https://github.com/Anatoos/react-burger
 
-
-# To install 
+# To install
 
 ## Create dependencies
     $ npm install

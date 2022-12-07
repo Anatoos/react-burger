@@ -32,7 +32,9 @@ const AppHeader = () =>{
                         </section>
                     </Link>
                 </section>
-                <Logo/>
+                <Link to={'/'}>
+                    <Logo/>
+                </Link>
                 <Entry path={pathname} />
             </section>
         </section>

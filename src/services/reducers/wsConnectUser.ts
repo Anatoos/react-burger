@@ -6,7 +6,7 @@ import {
 import { TInitialSocketState } from "../../types/WSData";
 import { TWSActionsUser } from "../actions/wsConnectUser";
 
-const InitialSocketState: TInitialSocketState = {
+export const InitialSocketState: TInitialSocketState = {
     wsConnected: false,
     data: {
         orders: []
