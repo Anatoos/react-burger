@@ -61,7 +61,7 @@ export const  Feed:FC = () => {
         <div>
             <main>
                 {activeModal && (
-                    <Modal title="Детали ингредиента" close={closeModal}>
+                    <Modal title="Детали заказа" close={closeModal}>
                         <FeedId/>
                     </Modal>
                 )}

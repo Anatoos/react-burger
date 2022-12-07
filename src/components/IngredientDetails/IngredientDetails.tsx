@@ -19,7 +19,7 @@ const IngredientDetails = () => {
             <div className={styles.nutritions}>
                 <div className={styles.nutrition}>
                     <p className="text text_type_main-small text_color_inactive">
-                        Калории,ккал
+                        Калории, ккал
                     </p>
                     <p className="text text_type_main-small text_color_inactive">
                         {data.calories}

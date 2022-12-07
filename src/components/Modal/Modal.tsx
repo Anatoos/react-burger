@@ -33,7 +33,9 @@ const Modal: FC<TProps> = (props) =>{
                             <p className="text text_type_main-medium">
                                 {title}
                             </p>
-                            <CloseIcon type="primary" onClick={close}/>
+                            <div className={modalStyle.closeIcon}>
+                                <CloseIcon type="primary" onClick={close}/>
+                            </div>
                         </div>
                         {children}
                     </div>

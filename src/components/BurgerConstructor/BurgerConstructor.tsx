@@ -179,7 +179,7 @@ type TItem = {
                     <OrderDetails number={orderId}/>
                 </Modal>
             )}
-            <div ref={dropTarget} style={{opacity}}>
+            <div className={styles.constructor_block} ref={dropTarget} style={{opacity}}>
                 {bun.name === undefined && selectedItems.length < 1 && (
                     <div>
                         <p className={styles.title + ' text_type_main-large'}>
@@ -227,14 +227,12 @@ type TItem = {
                  </div>
                 )}
             </div>
-            <div className={styles.order_block}>
+            <div className={styles.orderBlock}>
                 <div className={styles.price + ' text text_type_digits-medium'}>
                     <p> {sum} </p> <CurrencyIcon type="primary" />
                 </div>
-                <div className='text text_type_main-medium'>
-                    <Button type="primary" size="medium" onClick={openModal}>
-                        Оформить заказ
-                    </Button>
+                <div className={styles.button + 'text text_type_main-medium'}>
+                    <Button type="primary" size="medium" onClick={openModal}>Оформить заказ</Button>
                 </div>
             </div>
         </div>
