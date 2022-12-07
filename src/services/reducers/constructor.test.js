@@ -1,7 +1,22 @@
 import * as actions from "../actions/constructor";
 import { constructorOrderReducer, constructorInitialState }  from "./constructor";
 
-
+const testIngredient = {
+    _id: '60d3b41abdacab0026a733c7',
+        name: 'Флюоресцентная булка R2-D3',
+    type: 'bun',
+    proteins: 44,
+    fat: 26,
+    carbohydrates: 85,
+    calories: 643,
+    price: 988,
+    image: 'https://code.s3.yandex.net/react/code/bun-01.png',
+    image_mobile:
+    'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
+        image_large: 'https://code.s3.yandex.net/react/code/bun-01-large.png',
+    __v: 0,
+    count: 1
+}
 describe('constructorOrderReducer', () => {
     it('should return the initial state', () => {
         expect(constructorOrderReducer(undefined, {})).toEqual(constructorInitialState);
@@ -11,46 +26,14 @@ describe('constructorOrderReducer', () => {
         expect(
             constructorOrderReducer(constructorInitialState, {
                 type: actions.SET_ITEM,
-                data: {
-                    _id: '60d3b41abdacab0026a733c7',
-                    name: 'Флюоресцентная булка R2-D3',
-                    type: 'bun',
-                    proteins: 44,
-                    fat: 26,
-                    carbohydrates: 85,
-                    calories: 643,
-                    price: 988,
-                    image: 'https://code.s3.yandex.net/react/code/bun-01.png',
-                    image_mobile:
-                        'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
-                    image_large: 'https://code.s3.yandex.net/react/code/bun-01-large.png',
-                    __v: 0,
-                    count: 1
-                },
-                uid: '60d3b41abdacab0026a733c7'
+                data: testIngredient
             })
         ).toEqual(
             expect.objectContaining({
                 ...constructorInitialState,
                 selectedItems: [
                     ...constructorInitialState.selectedItems,
-                    {
-                        _id: '60d3b41abdacab0026a733c7',
-                        name: 'Флюоресцентная булка R2-D3',
-                        type: 'bun',
-                        proteins: 44,
-                        fat: 26,
-                        carbohydrates: 85,
-                        calories: 643,
-                        price: 988,
-                        image: 'https://code.s3.yandex.net/react/code/bun-01.png',
-                        image_mobile:
-                            'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
-                        image_large: 'https://code.s3.yandex.net/react/code/bun-01-large.png',
-                        __v: 0,
-                        count: 1,
-                        uid: '60d3b41abdacab0026a733c7'
-                    }
+                    testIngredient
                 ]
             })
         );
@@ -60,43 +43,12 @@ describe('constructorOrderReducer', () => {
         expect(
             constructorOrderReducer(constructorInitialState, {
                 type: actions.SET_BUN,
-                data: {
-                    _id: '60d3b41abdacab0026a733c7',
-                    name: 'Флюоресцентная булка R2-D3',
-                    type: 'bun',
-                    proteins: 44,
-                    fat: 26,
-                    carbohydrates: 85,
-                    calories: 643,
-                    price: 988,
-                    image: 'https://code.s3.yandex.net/react/code/bun-01.png',
-                    image_mobile:
-                        'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
-                    image_large: 'https://code.s3.yandex.net/react/code/bun-01-large.png',
-                    __v: 0,
-                    count: 2
-                }
+                data: testIngredient
             })
         ).toEqual(
             expect.objectContaining({
                 ...constructorInitialState,
-                selectedBun:
-                    {
-                        _id: '60d3b41abdacab0026a733c7',
-                        name: 'Флюоресцентная булка R2-D3',
-                        type: 'bun',
-                        proteins: 44,
-                        fat: 26,
-                        carbohydrates: 85,
-                        calories: 643,
-                        price: 988,
-                        image: 'https://code.s3.yandex.net/react/code/bun-01.png',
-                        image_mobile:
-                            'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
-                        image_large: 'https://code.s3.yandex.net/react/code/bun-01-large.png',
-                        __v: 0,
-                        count: 2
-                    }
+                selectedBun: testIngredient
             })
         );
     });
