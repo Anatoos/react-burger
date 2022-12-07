@@ -1,12 +1,6 @@
 import * as actions from '../actions/ingredient'
-import { ingredientsReducer } from "./ingredient";
+import { ingredientsReducer, ingredientsInitialState} from "./ingredient";
 
-const ingredientsInitialState = {
-    ingredientsData: [{}],
-    ingredientsSuccess: false,
-    ingredientsFailed: false,
-    ingredientsRequest: false
-};
 
 describe('ingredientsReducer', () => {
     it('should return the initial state', () => {

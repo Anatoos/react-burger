@@ -8,7 +8,7 @@ import { TInitialSocketState } from "../../types/WSData";
 import { TWSActions } from "../actions/wsConnect";
 
 
-const iInitialSocketState: TInitialSocketState = {
+export const iInitialSocketState: TInitialSocketState = {
     wsConnected: false,
     data: {
         orders: [],

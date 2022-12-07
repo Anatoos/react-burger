@@ -1,11 +1,6 @@
 import * as actions from '../actions/currentItem'
-import { currentItemReducer } from "./currentItem";
+import { currentItemReducer, currentItemInitialState } from "./currentItem";
 
-const currentItemInitialState = {
-    currentItem: {},
-    currentOrderId: '',
-    activeModal: false
-};
 
 describe('currentItemOrderReducer', () => {
     it('should return the initial state', () => {

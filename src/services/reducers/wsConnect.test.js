@@ -1,14 +1,5 @@
 import * as actions from '../actions/wsConnect'
-import { wsReducer } from "./wsConnect";
-
-const iInitialSocketState = {
-    wsConnected: false,
-    data: {
-        orders: [],
-        total: 0,
-        totalToday: 0
-    }
-}
+import { wsReducer, iInitialSocketState } from "./wsConnect";
 
 describe('wsReducer', () => {
     it('should return the initial state', () => {

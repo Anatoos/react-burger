@@ -1,26 +1,20 @@
 import * as actions from '../actions/orderId'
-import {orderIdReducer} from "./orderId";
+import { orderIdReducer, orderIdInitialState } from "./orderId";
 
-const initialOrderIdState = {
-    orderId: 0,
-    orderIdSuccess: false,
-    orderIdFailed: false,
-    orderIdRequest: false
-}
 
 describe('orderIdReducer', () => {
     it('should return the initial state', () => {
-        expect(orderIdReducer(undefined, {})).toEqual(initialOrderIdState);
+        expect(orderIdReducer(undefined, {})).toEqual(orderIdInitialState);
     });
 
     it('should handle GET_ORDER_ID_REQUEST', () => {
         expect(
-            orderIdReducer(initialOrderIdState, {
+            orderIdReducer(orderIdInitialState, {
                 type: actions.GET_ORDER_ID_REQUEST,
             })
         ).toEqual(
             expect.objectContaining({
-                ...initialOrderIdState,
+                ...orderIdInitialState,
                 orderIdRequest: true,
                 orderIdFailed: false,
                 orderIdSuccess: false
@@ -30,13 +24,13 @@ describe('orderIdReducer', () => {
 
     it('should handle GET_ORDER_ID_SUCCESS', () => {
         expect(
-            orderIdReducer(initialOrderIdState, {
+            orderIdReducer(orderIdInitialState, {
                 type: actions.GET_ORDER_ID_SUCCESS,
                 data: '111111'
             })
         ).toEqual(
             expect.objectContaining({
-                ...initialOrderIdState,
+                ...orderIdInitialState,
                 orderId: '111111',
                 orderIdRequest: false,
                 orderIdSuccess: true,
@@ -47,12 +41,12 @@ describe('orderIdReducer', () => {
 
     it('should handle GET_ORDER_ID_FAILED', () => {
         expect(
-            orderIdReducer(initialOrderIdState, {
+            orderIdReducer(orderIdInitialState, {
                 type: actions.GET_ORDER_ID_FAILED,
             })
         ).toEqual(
             expect.objectContaining({
-                ...initialOrderIdState,
+                ...orderIdInitialState,
                 orderIdRequest: false,
                 orderIdFailed: true,
                 orderIdSuccess: false
@@ -60,10 +54,10 @@ describe('orderIdReducer', () => {
         );
     });
 
-    it('should handle CLEAR_ORDER_NUMBER', () => {
+    it('should handle CLEAR_ORDER_ID', () => {
         expect(
-            orderIdReducer(initialOrderIdState, {
-                type: actions.CLEAR_ORDER_NUMBER,
+            orderIdReducer(orderIdInitialState, {
+                type: actions.CLEAR_ORDER_ID,
             })
         ).toEqual(
             expect.objectContaining({

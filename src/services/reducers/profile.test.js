@@ -1,25 +1,5 @@
 import * as actions from '../actions/profile'
-import { profileReducer } from "./profile";
-
-const profileInitialState = {
-    user: {},
-
-    loginInfo: false,
-    loginInfoSuccess: false,
-    loginInfoFailed:false,
-
-    getUserInfo: false,
-    getUserInfoSuccess: false,
-    getUserInfoFailed:false,
-
-    register: false,
-    registerSuccess: false,
-    registerFailed: false,
-
-    logoutInfo: false,
-    logoutInfoSuccess: false,
-    logoutInfoFailed: false,
-};
+import { profileReducer, profileInitialState } from "./profile";
 
 describe('profileReducer', () => {
     it('should return the initial state', () => {

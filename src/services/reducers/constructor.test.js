@@ -1,12 +1,6 @@
 import * as actions from "../actions/constructor";
-import {constructorOrderReducer}  from "./constructor";
+import { constructorOrderReducer, constructorInitialState }  from "./constructor";
 
-const constructorInitialState = {
-    selectedBun: {},
-    selectedItems: [],
-    selectedItemsCount: [],
-    hoverBoundingRect: 0
-}
 
 describe('constructorOrderReducer', () => {
     it('should return the initial state', () => {

@@ -15,7 +15,7 @@ type TConstructorInitialState = {
     selectedItems: Array<TSelectedIngredients>,
     hoverBoundingRect: number
 }
-const constructorInitialState = {
+export const constructorInitialState = {
     selectedBun: {} as TIngredient,
     selectedItems: [],
     selectedItemsCount: [],

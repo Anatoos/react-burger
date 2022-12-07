@@ -39,7 +39,7 @@ type TProfileInitialState = {
     logoutInfoFailed: boolean,
 }
 
-const profileInitialState = {
+export const profileInitialState = {
     user: {} as TUser,
 
     loginInfo: false,

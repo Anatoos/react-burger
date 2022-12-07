@@ -1,6 +1,7 @@
 describe('ingredient modal test, on open/close event', function () {
+    const baseUrl = Cypress.config('baseUrl');
     before(function () {
-        cy.visit('http://localhost:3000');
+        cy.visit(`${baseUrl}`);
     });
 
     it('opening modal of ingredient', function () {

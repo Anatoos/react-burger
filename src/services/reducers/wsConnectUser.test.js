@@ -1,27 +1,21 @@
 import * as actions from '../actions/wsConnectUser'
-import {wsReducerUser} from "./wsConnectUser";
+import { wsReducerUser, InitialSocketState } from "./wsConnectUser";
 
 
-const iInitialSocketState= {
-    wsConnected: false,
-    data: {
-        orders: [],
-    }
-}
 
 describe('wsReducerUser', () => {
     it('should return the initial state', () => {
-        expect(wsReducerUser(undefined, {})).toEqual(iInitialSocketState);
+        expect(wsReducerUser(undefined, {})).toEqual(InitialSocketState);
     });
 
     it('should handle WS_CONNECTION_START_USER', () => {
         expect(
-            wsReducerUser(iInitialSocketState, {
+            wsReducerUser(InitialSocketState, {
                 type: actions.WS_CONNECTION_START_USER,
             })
         ).toEqual(
             expect.objectContaining({
-                ...iInitialSocketState,
+                ...InitialSocketState,
                 wsConnected: true,
                 error: undefined,
             })
@@ -30,13 +24,13 @@ describe('wsReducerUser', () => {
 
     it('should handle WS_CONNECTION_ERROR_USER', () => {
         expect(
-            wsReducerUser(iInitialSocketState, {
+            wsReducerUser(InitialSocketState, {
                 type: actions.WS_CONNECTION_ERROR_USER,
                 payload: {}
             })
         ).toEqual(
             expect.objectContaining({
-                ...iInitialSocketState,
+                ...InitialSocketState,
                 error: {},
                 wsConnected: false,
             })
@@ -45,12 +39,12 @@ describe('wsReducerUser', () => {
 
     it('should handle WS_CONNECTION_CLOSED_USER', () => {
         expect(
-            wsReducerUser(iInitialSocketState, {
+            wsReducerUser(InitialSocketState, {
                 type: actions.WS_CONNECTION_CLOSED_USER,
             })
         ).toEqual(
             expect.objectContaining({
-                ...iInitialSocketState,
+                ...InitialSocketState,
                 error: undefined,
                 wsConnected: false,
             })
@@ -59,7 +53,7 @@ describe('wsReducerUser', () => {
 
     it('should handle WS_GET_ORDERS_USER_REQUEST', () => {
         expect(
-            wsReducerUser(iInitialSocketState, {
+            wsReducerUser(InitialSocketState, {
                 type: actions.WS_GET_ORDERS_USER_REQUEST,
                 payload: {
                     orders: [{},{}],
@@ -67,10 +61,10 @@ describe('wsReducerUser', () => {
             })
         ).toEqual(
             expect.objectContaining({
-                ...iInitialSocketState,
+                ...InitialSocketState,
                 error: undefined,
                 data: {
-                    ...iInitialSocketState.data,
+                    ...InitialSocketState.data,
                     orders: [{},{}],
                 },
             })

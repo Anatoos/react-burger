@@ -13,7 +13,7 @@ type TCurrentItemInitialState = {
     activeModal: boolean
 }
 
-const currentItemInitialState: TCurrentItemInitialState = {
+export const currentItemInitialState: TCurrentItemInitialState = {
     currentItem: {} as TIngredient,
     currentOrderId: '',
     activeModal: false
