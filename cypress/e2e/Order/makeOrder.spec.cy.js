@@ -1,7 +1,7 @@
 describe('checking DND for ingredients into constructor and order',  () => {
     const baseUrl = Cypress.config('baseUrl');
     before( () => {
-        cy.visit(`${baseUrl}`);
+        cy.visit('');
     })
     const constructor_block = '[class^=BurgerConstructor_constructor_block]';
     it('drag the ingredient and drop it into the constructor',  () => {
